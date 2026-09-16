@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Evergreen Christian School Robotics" />
+    <title>ECS Robotics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <a class="identity" href="index.html" aria-label="ECS Robotics About page">
+        <svg class="identity-mark" viewBox="0 0 46 46" aria-hidden="true">
+          <path class="mark-small" d="m19 17 4-5 4 5" />
+          <path class="mark-middle" d="m14 26 9-10 9 10" />
+          <path class="mark-large red" d="M8 36 23 21l15 15" />
+        </svg>
+        <span class="identity-copy">
+          <span class="identity-name"><strong>ECS</strong><span>ROBOTICS</span></span>
+          <span class="identity-location">LOUDOUN, VA</span>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="current" href="index.html" aria-current="page">About</a>
+        <a href="#competitions" hidden>Competitions</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="packages.html">Packages</a>
+        <a href="contact.html">Contact</a>
+        <a href="#resources" hidden>Resources</a>
+      </nav>
+
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-label">Menu</span>
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+      </button>
+
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <div class="mobile-links">
+          <a href="index.html" aria-current="page"><span>01</span>About</a>
+          <a href="#competitions" hidden><span>02</span>Competitions</a>
+          <a href="sponsors.html"><span>02</span>Sponsors</a>
+          <a href="packages.html"><span>03</span>Packages</a>
+          <a href="#resources" hidden><span>04</span>Resources</a>
+          <a href="contact.html"><span>04</span>Contact</a>
+        </div>
+        <div class="mobile-meta"><span>Evergreen Christian School</span><span>Building toward FRC</span></div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="home-hero" aria-labelledby="hero-title">
+        <canvas class="hero-dots" aria-hidden="true"></canvas>
+        <div class="hero-content">
+          <p class="hero-eyebrow">ABOUT ECS ROBOTICS</p>
+          <h1 id="hero-title">BUILDING THE FOUNDATION.</h1>
+          <p class="hero-description">We are creating a student-led engineering program at Evergreen Christian School, building toward FIRST Robotics Competition.</p>
+        </div>
+      </section>
+      <section class="sponsor-banner" id="sponsors" aria-labelledby="sponsor-title">
+        <div class="sponsor-heading scroll-reveal">
+          <h2 id="sponsor-title">SPONSORS</h2>
+        </div>
+        <span class="sponsor-slash scroll-reveal" aria-hidden="true">/</span>
+        <div class="sponsor-invitation scroll-reveal">
+          <a class="sponsor-cta" href="packages.html">BE OUR SPONSOR</a>
+        </div>
+      </section>
+      <section class="goals-section" id="about" aria-labelledby="goals-title">
+        <h2 id="goals-title" class="scroll-reveal">OUR GOAL</h2>
+        <div class="goals-grid">
+          <article class="goal-card scroll-reveal">
+            <img src="assets/goals/learn.jpg" alt="Close-up of electronic components on a circuit board" loading="lazy" />
+            <div class="goal-caption"><h3>LEARN</h3><p>Through hands-on engineering.</p></div>
+          </article>
+          <article class="goal-card scroll-reveal">
+            <img src="assets/goals/build.jpg" alt="3D printer working among tools in a workshop" loading="lazy" />
+            <div class="goal-caption"><h3>BUILD</h3><p>Ideas into real systems.</p></div>
+          </article>
+          <article class="goal-card scroll-reveal">
+            <img src="assets/goals/lead.jpg" alt="Industrial robotic arm inside a manufacturing facility" loading="lazy" />
+            <div class="goal-caption"><h3>LEAD</h3><p>With integrity and responsibility.</p></div>
+          </article>
+          <article class="goal-card scroll-reveal">
+            <img src="assets/goals/serve.jpg" alt="Empty classroom with computers and work tables" loading="lazy" />
+            <div class="goal-caption"><h3>SERVE</h3><p>Our school and community.</p></div>
+          </article>
+        </div>
+      </section>
+      <section class="packages-section" id="packages" aria-labelledby="packages-title">
+        <div class="packages-heading">
+          <h2 id="packages-title">Skills Students Learn</h2>
+        </div>
+        <ul class="skills-list">
+          <li>Mechanical and Electrical Engineering</li>
+          <li>Computer Programming</li>
+          <li>Machining and Tool Usage</li>
+          <li>Computer Aided Design</li>
+          <li>Entrepreneurship, Graphic Design, and Marketing</li>
+          <li>Teamwork and Sportsmanship</li>
+        </ul>
+      </section>
+      <section class="closing-section" aria-labelledby="closing-title">
+        <h2 id="closing-title"><span>MAKE HIM</span> <span>KNOWN.</span></h2>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <nav class="footer-column footer-menu" aria-label="Footer navigation">
+          <h2>MENU</h2>
+          <a href="index.html">About</a>
+          <a href="index.html#about">Our Goal</a>
+          <a href="sponsors.html">Sponsors</a>
+          <a href="packages.html">Packages</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-brand">
+          <svg class="footer-mark" viewBox="0 0 46 46" aria-hidden="true">
+            <path d="m19 17 4-5 4 5M14 26l9-10 9 10" />
+            <path class="red" d="M8 36 23 21l15 15" />
+          </svg>
+          <strong>ECS ROBOTICS</strong>
+          <span>Evergreen Christian School</span>
+        </div>
+        <div class="footer-column footer-support">
+          <h2>SUPPORT</h2>
+          <p>Help build what comes next.</p>
+          <a href="packages.html">Be our sponsor <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ECS Coding and Robotic Club</span>
+        <span>Loudoun, VA · Building toward FRC</span>
+        <a href="#">Back to top ↑</a>
+      </div>
+    </footer>
+  </body>
+</html>
