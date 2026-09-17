@@ -10,3 +10,7 @@ These images are illustrative stock photography, not photographs of ECS Robotics
 # Student guide photography
 
 - `student.html` hero image — [First Robotics Competition (830928) / NASA, via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:First_Robotics_Competition_(830928).jpg)
+
+# Footer mark
+
+- `assets/frc-logo-reverse.png` — Official FIRST Robotics Competition reverse logo, from [FIRST Brand and Logo Files](https://www.firstinspires.org/brand/logos-guidelines). Used in connection with ECS Robotics team materials.
