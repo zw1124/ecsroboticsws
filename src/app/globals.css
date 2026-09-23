@@ -148,7 +148,7 @@
 .reveal-visible { opacity: 1; transform: none; }
 .location-section { display: grid; min-height: 40rem; grid-template-columns: minmax(20rem,.72fr) minmax(0,1.28fr); background: #080808; }
 .location-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(4rem,8vw,8rem); background: #e12634; color: white; }
-.location-copy h2 { margin-top: 1.5rem; font-size: clamp(4rem,7vw,7.5rem); font-weight: 700; line-height: .83; letter-spacing: -.08em; }
+.location-copy h2 { margin-top: 1.5rem; font-size: clamp(2.2rem,3.3vw,3.5rem); font-weight: 700; line-height: 1; letter-spacing: -.08em; }
 .location-copy address { display: grid; gap: .55rem; margin-top: clamp(3rem,6vw,6rem); padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.45); font-style: normal; }
 .location-copy address strong { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
 .location-copy address span { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.78); }
@@ -156,10 +156,10 @@
 .location-map { position: relative; min-height: 35rem; overflow: hidden; background: #111; }
 .map-canvas { width: 100%; height: 100%; min-height: 40rem; }
 .location-map::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg,rgba(225,38,52,.16),transparent 38%); mix-blend-mode: multiply; }
-.map-fallback { display: flex; min-height: 40rem; height: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: radial-gradient(circle at center, #29292a 0 1px, transparent 1px) 0 0 / 28px 28px, #111; text-align: center; }
-.map-fallback-pin { width: 2.5rem; height: 2.5rem; margin-bottom: 2rem; border: .6rem solid white; border-radius: 50%; background: #e12634; box-shadow: 0 0 0 1rem rgba(225,38,52,.2); }
-.map-fallback p { font-size: .78rem; font-weight: 800; letter-spacing: .16em; }
-.map-fallback span { margin-top: .6rem; color: #aaa; font-size: .66rem; letter-spacing: .08em; }
+.map-fallback { position: absolute; z-index: 2; inset: 0; display: flex; min-height: 40rem; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.5px) 0 0 / 25px 25px, #c51f2d; color: white; text-align: center; }
+.map-fallback strong { font-size: clamp(3rem,8vw,8rem); font-weight: 800; line-height: 1; letter-spacing: -.085em; }
+.map-fallback-kicker { margin-bottom: 3rem; font-size: .65rem; font-weight: 700; letter-spacing: .17em; }
+.map-fallback-school { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.5); font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
 .location-map .mapboxgl-popup-content { padding: .8rem 1rem; border-radius: .2rem; background: #f4f3ed; color: #111; font-size: .75rem; font-weight: 700; }
 .location-map .mapboxgl-popup-tip { border-top-color: #f4f3ed; }
 .contact-hero { min-height: min(52rem,calc(100svh - 6rem)); }
