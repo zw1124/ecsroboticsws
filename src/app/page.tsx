@@ -1,0 +1,36 @@
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/reveal";
+
+const goals = [
+  ["LEARN", "Through hands-on engineering.", "/assets/goals/learn.jpg", "Close-up of electronic components"],
+  ["BUILD", "Ideas into real systems.", "/assets/goals/build.jpg", "3D printer working in a workshop"],
+  ["LEAD", "With integrity and responsibility.", "/assets/goals/lead.jpg", "Industrial robotic arm"],
+  ["SERVE", "Our school and community.", "/assets/goals/serve.jpg", "Classroom with computers"],
+] as const;
+
+const skills = ["Mechanical and Electrical Engineering", "Computer Programming", "Machining and Tool Usage", "Computer Aided Design", "Entrepreneurship, Graphic Design, and Marketing", "Teamwork and Sportsmanship"];
+
+export default function Home() {
+  return <main id="main">
+    <section className="dot-grid flex min-h-[calc(100svh-6rem)] items-end px-5 pb-16 md:px-[10vw] md:pb-[11vh]">
+      <div className="max-w-2xl bg-black/60 p-0 backdrop-blur-sm md:p-7">
+        <p className="eyebrow">EVERGREEN CHRISTIAN SCHOOL / LOUDOUN, VA</p>
+        <h1 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">BUILDING THE FOUNDATION.</h1>
+        <p className="mt-5 max-w-xl text-lg leading-relaxed">We are creating a student-led engineering program at Evergreen Christian School, building toward FIRST Robotics Competition.</p>
+        <Button asChild variant="link" className="mt-5 h-auto p-0 text-white underline decoration-primary underline-offset-8"><Link href="/packages">Be our sponsor <ArrowUpRight /></Link></Button>
+      </div>
+    </section>
+    <section className="grid min-h-[72svh] place-items-center px-5 py-24">
+      <Reveal className="flex flex-wrap items-center justify-center gap-6 md:gap-12"><h2 className="text-5xl font-bold tracking-[-.06em] md:text-7xl">SPONSORS</h2><span className="text-6xl text-primary">/</span><Button asChild variant="link" className="h-auto p-0 text-3xl font-bold text-primary"><Link href="/packages">BE OUR SPONSOR</Link></Button></Reveal>
+    </section>
+    <section className="bg-[#0b0b0b] px-5 py-24 md:px-[8vw] md:py-32">
+      <Reveal><h2 className="text-4xl font-bold tracking-tight">OUR GOAL</h2></Reveal>
+      <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{goals.map(([title, copy, src, alt]) => <Reveal key={title}><article><div className="relative aspect-[4/5] overflow-hidden"><Image src={src} alt={alt} fill sizes="(min-width:1280px) 22vw, (min-width:768px) 45vw, 100vw" className="object-cover grayscale-[.55] brightness-75 transition duration-500 hover:scale-[1.03] hover:grayscale-0" /></div><div className="border-t-2 border-primary bg-black p-5"><h3 className="text-3xl font-bold tracking-tight">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{copy}</p></div></article></Reveal>)}</div>
+    </section>
+    <section className="grid gap-12 bg-[#0b0b0b] px-5 py-24 md:grid-cols-[.8fr_1.2fr] md:px-[8vw] md:py-32"><h2 className="text-5xl font-bold tracking-[-.06em]">Skills Students Learn</h2><ul className="grid gap-x-8 md:grid-cols-2">{skills.map(skill => <li key={skill} className="flex min-h-16 items-center border-t border-white/10 text-sm font-semibold before:mr-4 before:size-2 before:rounded-full before:bg-primary">{skill}</li>)}</ul></section>
+    <section className="grid min-h-80 place-items-center bg-primary px-5 py-20 text-center"><h2 className="text-5xl font-bold tracking-[-.07em] text-white md:text-8xl">MAKE HIM KNOWN.</h2></section>
+  </main>;
+}

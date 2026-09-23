@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact-form";
+import { Reveal } from "@/components/reveal";
+
+export const metadata: Metadata = { title: "Contact", description: "Contact RobotECS about sponsorship or another question." };
+export default function ContactPage(){return <main id="main" className="px-5 py-24 md:px-[7vw] md:py-32"><div className="mx-auto grid max-w-[1400px] gap-16 lg:grid-cols-[.85fr_1.15fr] lg:gap-28"><Reveal><div><p className="eyebrow">01 / START A CONVERSATION</p><h1 className="mt-7 text-6xl font-bold leading-[.84] tracking-[-.08em] md:text-8xl">LET&apos;S BUILD<br/><span className="text-primary">WHAT&apos;S NEXT.</span></h1><p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">Interested in sponsoring RobotECS or learning more about the program? Tell us what you have in mind.</p><div className="mt-14 border-t border-white/15 pt-5"><span className="text-[9px] font-bold tracking-[.15em] text-muted-foreground">DIRECT EMAIL</span><br/><a href="mailto:kajin30@ecsloudoun.org" className="mt-3 inline-block border-b border-primary pb-1 text-sm">kajin30@ecsloudoun.org</a></div></div></Reveal><ContactForm/></div></main>}
