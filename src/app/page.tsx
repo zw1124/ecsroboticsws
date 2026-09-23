@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
+import { SchoolMap } from "@/components/school-map";
 
 const goals = [
   ["LEARN", "Through hands-on engineering.", "/assets/goals/learn.jpg", "Close-up of electronic components"],
@@ -31,6 +32,14 @@ export default function Home() {
       <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{goals.map(([title, copy, src, alt]) => <Reveal key={title}><article><div className="relative aspect-[4/5] overflow-hidden"><Image src={src} alt={alt} fill sizes="(min-width:1280px) 22vw, (min-width:768px) 45vw, 100vw" className="object-cover grayscale-[.55] brightness-75 transition duration-500 hover:scale-[1.03] hover:grayscale-0" /></div><div className="border-t-2 border-primary bg-black p-5"><h3 className="text-3xl font-bold tracking-tight">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{copy}</p></div></article></Reveal>)}</div>
     </section>
     <section className="grid gap-12 bg-[#0b0b0b] px-5 py-24 md:grid-cols-[.8fr_1.2fr] md:px-[8vw] md:py-32"><h2 className="text-5xl font-bold tracking-[-.06em]">Skills Students Learn</h2><ul className="grid gap-x-8 md:grid-cols-2">{skills.map(skill => <li key={skill} className="flex min-h-16 items-center border-t border-white/10 text-sm font-semibold before:mr-4 before:size-2 before:rounded-full before:bg-primary">{skill}</li>)}</ul></section>
-    <section className="grid min-h-80 place-items-center bg-primary px-5 py-20 text-center"><h2 className="text-5xl font-bold tracking-[-.07em] text-white md:text-8xl">MAKE HIM KNOWN.</h2></section>
+    <section className="location-section">
+      <div className="location-copy">
+        <p className="eyebrow text-white">ROBOT ECS / LOUDOUN, VA</p>
+        <h2>MAKE HIM<br/>KNOWN.</h2>
+        <address><strong>Evergreen Christian School</strong><span>21336 Evergreen Mills Road<br/>Leesburg, VA 20175</span></address>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=21336+Evergreen+Mills+Road,+Leesburg,+VA+20175" target="_blank" rel="noreferrer">Get directions <ArrowUpRight className="size-4"/></a>
+      </div>
+      <SchoolMap />
+    </section>
   </main>;
 }
