@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">RobotECS mark</title>
+  <path fill="none" stroke="#f4f3ed" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter" d="M8 38V10h15c7 0 11 3 11 9s-4 9-11 9H8m15 0 13 10"/>
+  <path fill="none" stroke="#e12634" stroke-width="4" stroke-linecap="square" d="M30 10h10M31 24h9M36 38h4"/>
+</svg>

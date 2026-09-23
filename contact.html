@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Contact RobotECS about sponsorship or another question." />
     <title>Contact — RobotECS</title>
+    <link rel="icon" href="assets/robotecs-mark.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260922" />
+    <script src="script.js?v=20260922" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="topbar">
-      <a class="identity" href="index.html" aria-label="RobotECS About page">
-        <svg class="identity-mark" viewBox="0 0 46 46" aria-hidden="true">
-          <path class="mark-small" d="m19 17 4-5 4 5" />
-          <path class="mark-middle" d="m14 26 9-10 9 10" />
-          <path class="mark-large red" d="M8 36 23 21l15 15" />
-        </svg>
+      <a class="identity" href="index.html" aria-label="RobotECS home">
+        <img class="identity-mark" src="assets/robotecs-mark.svg" alt="" />
         <span class="identity-copy">
           <span class="identity-name"><strong>Robot</strong><span>ECS</span></span>
           <span class="identity-location">LOUDOUN, VA</span>
         </span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="index.html">About</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
         <a href="sponsors.html">Sponsors</a>
         <a href="packages.html">Packages</a>
         <a class="current" href="contact.html" aria-current="page">Contact</a>
@@ -37,22 +35,27 @@
       </button>
       <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
         <div class="mobile-links">
-          <a href="index.html"><span>01</span>About</a>
-          <a href="sponsors.html"><span>02</span>Sponsors</a>
-          <a href="packages.html"><span>03</span>Packages</a>
-          <a href="contact.html" aria-current="page"><span>04</span>Contact</a>
+          <a href="index.html"><span>01</span>Home</a>
+          <a href="about.html"><span>02</span>About</a>
+          <a href="sponsors.html"><span>03</span>Sponsors</a>
+          <a href="packages.html"><span>04</span>Packages</a>
+          <a href="contact.html" aria-current="page"><span>05</span>Contact</a>
         </div>
         <div class="mobile-meta"><span>Evergreen Christian School</span><span>Building toward FRC</span></div>
       </nav>
     </header>
 
-    <main id="main" class="sponsor-page package-page contact-page">
-      <div class="sponsor-page-content contact-page-content">
-        <div class="package-page-intro contact-page-intro">
-          <h1>CONTACT</h1>
+    <main id="main" class="contact-page">
+      <div class="contact-layout">
+        <div class="contact-intro scroll-reveal">
+          <p class="section-index">01 / START A CONVERSATION</p>
+          <h1>LET'S BUILD<br /><span>WHAT'S NEXT.</span></h1>
+          <p>Interested in sponsoring RobotECS or learning more about the program? Tell us what you have in mind.</p>
+          <div class="contact-direct"><span>DIRECT EMAIL</span><a href="mailto:kajin30@ecsloudoun.org">kajin30@ecsloudoun.org</a></div>
         </div>
         <div class="contact-form-wrap">
-            <form id="contact-form" class="contact-form">
+            <form id="contact-form" class="contact-form" aria-label="Contact RobotECS">
+              <p class="form-index">02 / YOUR MESSAGE</p>
               <div class="contact-fields">
                 <div class="contact-field">
                   <label for="contact-name">Your name <span aria-hidden="true">*</span></label>
@@ -79,12 +82,12 @@
                 <textarea id="contact-message" name="message" required maxlength="5000" rows="6" placeholder="What would you like to talk about?"></textarea>
               </div>
               <div class="contact-form-action">
-                <button type="submit">Open email draft <span aria-hidden="true">↗</span></button>
+                <button type="submit">Prepare message <span aria-hidden="true">↗</span></button>
                 <p>Opens your email app for review before sending.</p>
               </div>
               <p id="contact-status" class="contact-status" role="status" aria-live="polite" hidden></p>
             </form>
-          </div>
+        </div>
       </div>
     </main>
 
@@ -92,8 +95,8 @@
       <div class="footer-main">
         <nav class="footer-column footer-menu" aria-label="Footer navigation">
           <h2>MENU</h2>
-          <a href="index.html">About</a>
-          <a href="index.html#about">Our Goal</a>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
           <a href="sponsors.html">Sponsors</a>
           <a href="packages.html">Packages</a>
           <a href="contact.html">Contact</a>

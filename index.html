@@ -5,24 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="RobotECS — Evergreen Christian School Robotics" />
     <title>RobotECS</title>
+    <link rel="icon" href="assets/robotecs-mark.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260922" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=20260922" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="topbar">
-      <a class="identity" href="index.html" aria-label="RobotECS About page">
-        <svg class="identity-mark" viewBox="0 0 46 46" aria-hidden="true">
-          <path class="mark-small" d="m19 17 4-5 4 5" />
-          <path class="mark-middle" d="m14 26 9-10 9 10" />
-          <path class="mark-large red" d="M8 36 23 21l15 15" />
-        </svg>
+      <a class="identity" href="index.html" aria-label="RobotECS home">
+        <img class="identity-mark" src="assets/robotecs-mark.svg" alt="" />
         <span class="identity-copy">
           <span class="identity-name"><strong>Robot</strong><span>ECS</span></span>
           <span class="identity-location">LOUDOUN, VA</span>
@@ -30,8 +27,8 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a class="current" href="index.html" aria-current="page">About</a>
-        <a href="#competitions" hidden>Competitions</a>
+        <a class="current" href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
         <a href="sponsors.html">Sponsors</a>
         <a href="packages.html">Packages</a>
         <a href="contact.html">Contact</a>
@@ -46,12 +43,11 @@
 
       <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
         <div class="mobile-links">
-          <a href="index.html" aria-current="page"><span>01</span>About</a>
-          <a href="#competitions" hidden><span>02</span>Competitions</a>
-          <a href="sponsors.html"><span>02</span>Sponsors</a>
-          <a href="packages.html"><span>03</span>Packages</a>
-          <a href="#resources" hidden><span>04</span>Resources</a>
-          <a href="contact.html"><span>04</span>Contact</a>
+          <a href="index.html" aria-current="page"><span>01</span>Home</a>
+          <a href="about.html"><span>02</span>About</a>
+          <a href="sponsors.html"><span>03</span>Sponsors</a>
+          <a href="packages.html"><span>04</span>Packages</a>
+          <a href="contact.html"><span>05</span>Contact</a>
         </div>
         <div class="mobile-meta"><span>Evergreen Christian School</span><span>Building toward FRC</span></div>
       </nav>
@@ -61,9 +57,10 @@
       <section class="home-hero" aria-labelledby="hero-title">
         <canvas class="hero-dots" aria-hidden="true"></canvas>
         <div class="hero-content">
-          <p class="hero-eyebrow">ABOUT ROBOTECS</p>
+          <p class="hero-eyebrow">EVERGREEN CHRISTIAN SCHOOL / LOUDOUN, VA</p>
           <h1 id="hero-title">BUILDING THE FOUNDATION.</h1>
           <p class="hero-description">We are creating a student-led engineering program at Evergreen Christian School, building toward FIRST Robotics Competition.</p>
+          <a class="hero-cta" href="packages.html">Be our sponsor <span aria-hidden="true">↗</span></a>
         </div>
       </section>
       <section class="sponsor-banner" id="sponsors" aria-labelledby="sponsor-title">
@@ -117,8 +114,8 @@
       <div class="footer-main">
         <nav class="footer-column footer-menu" aria-label="Footer navigation">
           <h2>MENU</h2>
-          <a href="index.html">About</a>
-          <a href="index.html#about">Our Goal</a>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
           <a href="sponsors.html">Sponsors</a>
           <a href="packages.html">Packages</a>
           <a href="contact.html">Contact</a>

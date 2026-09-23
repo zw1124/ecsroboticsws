@@ -1,22 +1,31 @@
 const button = document.querySelector('.menu-button');
 const menu = document.querySelector('.mobile-menu');
+menu.inert = true;
 
-function closeMenu() {
+function closeMenu(restoreFocus = false) {
   button.setAttribute('aria-expanded', 'false');
   menu.classList.remove('open');
+  menu.inert = true;
   document.body.classList.remove('menu-open');
+  if (restoreFocus) button.focus();
 }
 
 button.addEventListener('click', () => {
   const willOpen = button.getAttribute('aria-expanded') !== 'true';
+  if (!willOpen) {
+    closeMenu(true);
+    return;
+  }
   button.setAttribute('aria-expanded', String(willOpen));
   menu.classList.toggle('open', willOpen);
+  menu.inert = false;
   document.body.classList.toggle('menu-open', willOpen);
+  menu.querySelector('a')?.focus();
 });
 
-menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMenu(); });
-window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(); });
+menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => closeMenu(false)));
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') closeMenu(true); });
+window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(false); });
 
 const contactForm = document.querySelector('#contact-form');
 if (contactForm) {
