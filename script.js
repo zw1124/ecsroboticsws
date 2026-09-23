@@ -33,7 +33,7 @@ if (contactForm) {
       missing.focus();
       return;
     }
-    const subject = `ECS Robotics — ${topic}`;
+    const subject = `RobotECS — ${topic}`;
     const body = [
       `Name: ${name}`,
       ...(organization ? [`Organization: ${organization}`] : []),
