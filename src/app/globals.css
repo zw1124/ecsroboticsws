@@ -146,20 +146,18 @@
 .editorial-hero div > p { max-width: 42rem; color: #b7b7b2; font-size: clamp(1.05rem,1.5vw,1.3rem); line-height: 1.65; }
 .reveal { opacity: 0; transform: translateY(1.75rem); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
 .reveal-visible { opacity: 1; transform: none; }
-.location-section { display: grid; min-height: 40rem; grid-template-columns: minmax(20rem,.72fr) minmax(0,1.28fr); background: #080808; }
-.location-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(4rem,8vw,8rem); background: #e12634; color: white; }
-.location-copy h2 { margin-top: 1.5rem; font-size: clamp(2.2rem,3.3vw,3.5rem); font-weight: 700; line-height: 1; letter-spacing: -.08em; }
-.location-copy address { display: grid; gap: .55rem; margin-top: clamp(3rem,6vw,6rem); padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.45); font-style: normal; }
-.location-copy address strong { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
-.location-copy address span { font-size: .9rem; line-height: 1.6; color: rgba(255,255,255,.78); }
-.location-copy > a { display: inline-flex; width: fit-content; align-items: center; gap: .65rem; margin-top: 1.5rem; padding-bottom: .45rem; border-bottom: 1px solid white; font-size: .8rem; font-weight: 700; }
-.location-map { position: relative; min-height: 35rem; overflow: hidden; background: #111; }
-.map-canvas { width: 100%; height: 100%; min-height: 40rem; }
+.location-section { position: relative; min-height: 40rem; background: #c51f2d; }
+.location-map { position: absolute; inset: 0; overflow: hidden; background: #c51f2d; }
+.map-canvas { width: 100%; height: 100%; }
 .location-map::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg,rgba(225,38,52,.16),transparent 38%); mix-blend-mode: multiply; }
-.map-fallback { position: absolute; z-index: 2; inset: 0; display: flex; min-height: 40rem; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.5px) 0 0 / 25px 25px, #c51f2d; color: white; text-align: center; }
+.map-fallback { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.5px) 0 0 / 25px 25px, #c51f2d; color: white; text-align: center; }
 .map-fallback strong { font-size: clamp(3rem,8vw,8rem); font-weight: 800; line-height: 1; letter-spacing: -.085em; }
 .map-fallback-kicker { margin-bottom: 3rem; font-size: .65rem; font-weight: 700; letter-spacing: .17em; }
 .map-fallback-school { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.5); font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
+.location-info { position: absolute; z-index: 3; left: clamp(1.25rem,8vw,8rem); bottom: clamp(1.25rem,5vw,4rem); width: min(23rem,calc(100% - 2.5rem)); padding: 1.5rem; background: rgba(8,8,8,.9); color: white; backdrop-filter: blur(12px); }
+.location-info h2 { margin-top: 1rem; font-size: 1.5rem; font-weight: 700; line-height: 1.1; letter-spacing: -.04em; }
+.location-info address { margin-top: 1rem; color: #c8c8c4; font-size: .85rem; font-style: normal; line-height: 1.6; }
+.location-info a { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.25rem; padding-bottom: .3rem; border-bottom: 1px solid #e12634; font-size: .8rem; font-weight: 700; }
 .location-map .mapboxgl-popup-content { padding: .8rem 1rem; border-radius: .2rem; background: #f4f3ed; color: #111; font-size: .75rem; font-weight: 700; }
 .location-map .mapboxgl-popup-tip { border-top-color: #f4f3ed; }
 .contact-hero { min-height: min(52rem,calc(100svh - 6rem)); }
@@ -175,9 +173,9 @@
 @media (max-width: 767px) {
   .editorial-hero { grid-template-columns: 1fr; min-height: auto; gap: 2.5rem; padding-block: 6rem; }
   .editorial-hero h1 { font-size: clamp(3.5rem,17vw,5.2rem); }
-  .location-section, .contact-form-section { grid-template-columns: 1fr; }
-  .location-copy { min-height: 34rem; padding: 5rem 1.25rem; }
-  .location-map, .map-canvas, .map-fallback { min-height: 30rem; }
+  .contact-form-section { grid-template-columns: 1fr; }
+  .location-section { min-height: 38rem; }
+  .location-info { left: 1.25rem; bottom: 1.25rem; }
   .contact-form-section { padding-block: 6rem; }
 }
 

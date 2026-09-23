@@ -27,3 +27,7 @@ npm run build
 ```
 
 The production-ready static site is generated in `out/`.
+
+## Mapbox on Cloudflare Pages
+
+Set `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` to your `pk.` public token in the Pages project's **Production** environment variables, then redeploy. Next.js includes this value when it builds the static site, so changing the variable alone does not update an existing deployment. The map fills the homepage location section; if the token is missing or Mapbox fails to load, the section displays a red RobotECS fallback.

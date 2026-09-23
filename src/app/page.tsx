@@ -33,13 +33,13 @@ export default function Home() {
     </section>
     <section className="grid gap-12 bg-[#0b0b0b] px-5 py-24 md:grid-cols-[.8fr_1.2fr] md:px-[8vw] md:py-32"><h2 className="text-5xl font-bold tracking-[-.06em]">Skills Students Learn</h2><ul className="grid gap-x-8 md:grid-cols-2">{skills.map(skill => <li key={skill} className="flex min-h-16 items-center border-t border-white/10 text-sm font-semibold before:mr-4 before:size-2 before:rounded-full before:bg-primary">{skill}</li>)}</ul></section>
     <section className="location-section">
-      <div className="location-copy">
-        <p className="eyebrow text-white">EVERGREEN CHRISTIAN SCHOOL / LOUDOUN, VA</p>
-        <h2>ROBOTECS</h2>
-        <address><strong>Evergreen Christian School</strong><span>21336 Evergreen Mills Road<br/>Leesburg, VA 20175</span></address>
+      <SchoolMap />
+      <div className="location-info">
+        <p className="eyebrow">FIND US / LOUDOUN, VA</p>
+        <h2>Evergreen Christian School</h2>
+        <address>21336 Evergreen Mills Road<br/>Leesburg, VA 20175</address>
         <a href="https://www.google.com/maps/dir/?api=1&destination=21336+Evergreen+Mills+Road,+Leesburg,+VA+20175" target="_blank" rel="noreferrer">Get directions <ArrowUpRight className="size-4"/></a>
       </div>
-      <SchoolMap />
     </section>
   </main>;
 }
