@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const SCHOOL_COORDINATES: [number, number] = [-77.580865, 39.0312299];
+// School building, rather than the athletic field north of it.
+const SCHOOL_COORDINATES: [number, number] = [-77.5807612, 39.0306021];
 const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 export function SchoolMap() {
@@ -60,7 +61,7 @@ export function SchoolMap() {
       {MAPBOX_TOKEN && <div ref={container} className="map-canvas" />}
       {(!MAPBOX_TOKEN || failed || !loaded) && (
         <div className="map-fallback">
-          <span className="map-fallback-kicker">LOUDOUN, VIRGINIA / 39.0312° N</span>
+          <span className="map-fallback-kicker">LOUDOUN, VIRGINIA / 39.0306° N</span>
           <strong>ROBOTECS</strong>
           <span className="map-fallback-school">EVERGREEN CHRISTIAN SCHOOL</span>
         </div>
