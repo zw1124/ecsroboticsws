@@ -38,7 +38,7 @@ export default function Home() {
         <Button asChild variant="link" className="mt-5 h-auto p-0 text-white underline decoration-primary underline-offset-8"><Link href="/packages">Be our sponsor <ArrowUpRight /></Link></Button>
       </Reveal>
       <Reveal className="flex flex-col items-center text-center" delay={140}>
-        <Image src="/assets/robotecs-eagle.png" alt="RobotECS eagle logo" width={600} height={600} priority className="w-full max-w-[460px] mix-blend-screen" />
+        <Image src="/assets/robotecs-eagle-transparent.png" alt="RobotECS eagle logo" width={600} height={600} priority className="w-full max-w-[460px]" />
         <p className="-mt-3 whitespace-nowrap text-[clamp(1.75rem,4vw,3.75rem)] font-black tracking-[-0.065em] leading-none text-white md:-mt-5">
           FRC TEAM <span className="text-primary">12394</span>
         </p>
