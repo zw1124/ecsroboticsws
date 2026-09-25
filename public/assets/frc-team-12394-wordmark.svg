@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 220" role="img" aria-labelledby="title">
+  <title id="title">FRC Team 12394</title>
+  <defs>
+    <clipPath id="wordmark-clip">
+      <path d="M0 0h1000v220H0z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#wordmark-clip)">
+    <path d="M28 40h118l-13 10H28zM28 58h77l-13 7H28z" fill="#e12634"/>
+    <path d="M854 40h118v10H841zM895 58h77v7h-86z" fill="#e12634"/>
+    <text x="502" y="68" text-anchor="middle" fill="#f4f3ed" font-family="Arial Black,Arial,Helvetica,sans-serif" font-size="47" font-style="italic" font-weight="900" letter-spacing="12">FRC TEAM</text>
+    <path d="M98 94h804l-17 8H115z" fill="#e12634"/>
+    <text x="500" y="202" text-anchor="middle" fill="#e12634" font-family="Arial Black,Arial,Helvetica,sans-serif" font-size="144" font-style="italic" font-weight="900" letter-spacing="-7">12394</text>
+    <path d="M118 207h205l-12 7H118zM687 207h195v7H675z" fill="#f4f3ed"/>
+  </g>
+</svg>

@@ -39,9 +39,7 @@ export default function Home() {
       </Reveal>
       <Reveal className="flex flex-col items-center text-center" delay={140}>
         <Image src="/assets/robotecs-eagle-cutout.png" alt="RobotECS eagle logo" width={600} height={600} priority className="w-full max-w-[460px]" />
-        <p className="-mt-3 whitespace-nowrap text-[clamp(1.75rem,4vw,3.75rem)] font-black tracking-[-0.065em] leading-none text-white md:-mt-5">
-          FRC TEAM <span className="text-primary">12394</span>
-        </p>
+        <Image src="/assets/frc-team-12394-wordmark.svg" alt="FRC Team 12394" width={1000} height={220} className="-mt-5 w-full max-w-[460px] md:-mt-7" />
       </Reveal>
     </section>
     <section className="grid min-h-[72svh] place-items-center px-5 py-24">
