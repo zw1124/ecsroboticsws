@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
@@ -14,8 +15,21 @@ const goals = [
 
 const skills = ["Mechanical and Electrical Engineering", "Computer Programming", "Machining and Tool Usage", "Computer Aided Design", "Entrepreneurship, Graphic Design, and Marketing", "Teamwork and Sportsmanship"];
 
+export const metadata: Metadata = {
+  alternates: { canonical: "https://robotecs.tech/" },
+};
+
+const websiteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "RobotECS",
+  alternateName: ["FRC Team 12394", "RobotECS FRC Team 12394"],
+  url: "https://robotecs.tech/",
+};
+
 export default function Home() {
   return <main id="main">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }} />
     <section className="dot-grid grid min-h-[calc(100svh-6rem)] items-center gap-10 px-5 py-16 md:px-[10vw] lg:grid-cols-[1.1fr_.9fr]">
       <div className="max-w-2xl bg-black/60 p-0 backdrop-blur-sm md:p-7">
         <p className="eyebrow">EVERGREEN CHRISTIAN SCHOOL / LOUDOUN, VA</p>

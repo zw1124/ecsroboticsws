@@ -15,8 +15,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "RobotECS", template: "%s — RobotECS" },
-  description: "RobotECS, FRC Team 12394 at Evergreen Christian School.",
+  metadataBase: new URL("https://robotecs.tech"),
+  title: { default: "RobotECS | FRC Team 12394", template: "%s — RobotECS" },
+  description: "RobotECS is FIRST Robotics Competition (FRC) Team 12394 at Evergreen Christian School in Loudoun County, Virginia. Meet our student-led robotics team.",
+  openGraph: {
+    type: "website",
+    siteName: "RobotECS",
+    title: "RobotECS | FRC Team 12394",
+    description: "Meet RobotECS, FIRST Robotics Competition Team 12394 at Evergreen Christian School in Loudoun County, Virginia.",
+    url: "https://robotecs.tech/",
+  },
   icons: { icon: "/assets/robotecs-eagle.png", shortcut: "/assets/robotecs-eagle.png", apple: "/assets/robotecs-eagle.png" },
 };
 
