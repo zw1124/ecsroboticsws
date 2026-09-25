@@ -18,12 +18,17 @@ export default function Home() {
   return <main id="main">
     <section className="dot-grid grid min-h-[calc(100svh-6rem)] items-center gap-10 px-5 py-16 md:px-[10vw] lg:grid-cols-[1.1fr_.9fr]">
       <div className="max-w-2xl bg-black/60 p-0 backdrop-blur-sm md:p-7">
-        <p className="eyebrow">EVERGREEN CHRISTIAN SCHOOL / FRC TEAM 12394</p>
+        <p className="eyebrow">EVERGREEN CHRISTIAN SCHOOL / LOUDOUN, VA</p>
         <h1 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">BUILDING THE FOUNDATION.</h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed">We are RobotECS, FIRST Robotics Competition Team 12394 at Evergreen Christian School. Student-led, hands-on, and ready to build.</p>
         <Button asChild variant="link" className="mt-5 h-auto p-0 text-white underline decoration-primary underline-offset-8"><Link href="/packages">Be our sponsor <ArrowUpRight /></Link></Button>
       </div>
-      <Image src="/assets/robotecs-eagle.png" alt="RobotECS eagle logo" width={600} height={600} priority className="mx-auto w-full max-w-[460px] mix-blend-screen" />
+      <div className="flex flex-col items-center text-center">
+        <Image src="/assets/robotecs-eagle.png" alt="RobotECS eagle logo" width={600} height={600} priority className="w-full max-w-[460px] mix-blend-screen" />
+        <p className="-mt-3 whitespace-nowrap text-[clamp(1.75rem,4vw,3.75rem)] font-black tracking-[-0.065em] leading-none text-white md:-mt-5">
+          FRC TEAM <span className="text-primary">12394</span>
+        </p>
+      </div>
     </section>
     <section className="grid min-h-[72svh] place-items-center px-5 py-24">
       <Reveal className="flex flex-wrap items-center justify-center gap-6 md:gap-12"><h2 className="text-5xl font-bold tracking-[-.06em] md:text-7xl">SPONSORS</h2><span className="text-6xl text-primary">/</span><Button asChild variant="link" className="h-auto p-0 text-3xl font-bold text-primary"><Link href="/packages">BE OUR SPONSOR</Link></Button></Reveal>
