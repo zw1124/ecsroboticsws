@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import { SchoolMap } from "@/components/school-map";
+import { HomeScrollSnap } from "@/components/home-scroll-snap";
 
 const goals = [
   ["LEARN", "Through hands-on engineering.", "/assets/goals/learn.jpg", "Close-up of electronic components"],
@@ -30,7 +31,8 @@ const websiteStructuredData = {
 export default function Home() {
   return <main id="main">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteStructuredData) }} />
-    <section className="dot-grid grid min-h-[calc(100svh-6rem)] items-center gap-10 px-5 py-16 md:px-[10vw] lg:grid-cols-[1.1fr_.9fr]">
+    <HomeScrollSnap />
+    <section id="home-hero" className="dot-grid grid min-h-[calc(100svh-6rem)] items-center gap-10 px-5 py-16 md:px-[10vw] lg:grid-cols-[1.1fr_.9fr]">
       <Reveal className="max-w-2xl bg-black/60 p-0 backdrop-blur-sm md:p-7">
         <p className="eyebrow">EVERGREEN CHRISTIAN SCHOOL / LOUDOUN, VA</p>
         <h1 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">WE ARE ROBOTECS.</h1>
@@ -42,7 +44,7 @@ export default function Home() {
         <Image src="/assets/frc-team-12394-wordmark.svg" alt="FRC Team 12394" width={1000} height={165} className="-mt-5 w-full max-w-[460px] md:-mt-7" />
       </Reveal>
     </section>
-    <section className="grid min-h-[72svh] place-items-center px-5 py-24">
+    <section id="home-sponsors" className="grid min-h-[100svh] place-items-center px-5 py-24">
       <Reveal className="flex flex-wrap items-center justify-center gap-6 md:gap-12"><h2 className="text-5xl font-bold tracking-[-.06em] md:text-7xl">SPONSORS</h2><span className="text-6xl text-primary">/</span><Button asChild variant="link" className="h-auto p-0 text-3xl font-bold text-primary"><Link href="/packages">BE OUR SPONSOR</Link></Button></Reveal>
     </section>
     <section className="bg-[#0b0b0b] px-5 py-24 md:px-[8vw] md:py-32">
