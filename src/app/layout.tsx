@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: { default: "RobotECS", template: "%s — RobotECS" },
-  description: "RobotECS — Evergreen Christian School Robotics",
-  icons: { icon: "/assets/robotecs-mark.svg" },
+  description: "RobotECS, FRC Team 12394 at Evergreen Christian School.",
+  icons: { icon: "/assets/robotecs-eagle.png", shortcut: "/assets/robotecs-eagle.png", apple: "/assets/robotecs-eagle.png" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

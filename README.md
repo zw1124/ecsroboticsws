@@ -1,6 +1,6 @@
 # RobotECS Website
 
-The official RobotECS website for the student-led robotics program at Evergreen Christian School.
+The official website for RobotECS, FIRST Robotics Competition Team 12394 at Evergreen Christian School.
 
 ## Stack
 

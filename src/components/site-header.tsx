@@ -18,8 +18,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 h-24 border-b border-white/5 bg-black/95 backdrop-blur md:relative">
       <div className="mx-auto flex h-full max-w-[1536px] items-center justify-between px-5 md:px-12">
         <Link href="/" aria-label="RobotECS home" className="flex items-center gap-3">
-          <Image src="/assets/robotecs-mark.svg" alt="" width={42} height={42} priority />
-          <span className="grid leading-none"><strong className="text-[17px] tracking-[-.04em]">RobotECS</strong><span className="mt-1 text-[7px] tracking-[.18em] text-muted-foreground">LOUDOUN, VA</span></span>
+          <Image src="/assets/robotecs-eagle.png" alt="" width={52} height={52} priority />
+          <span className="grid leading-none"><strong className="text-[17px] tracking-[-.04em]">RobotECS</strong><span className="mt-1 text-[7px] tracking-[.18em] text-muted-foreground">FRC TEAM 12394</span></span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           {nav.map(([label, href]) => <Link key={href} href={href} className={cn("nav-link", pathname === href && "nav-active")}>{label}</Link>)}
