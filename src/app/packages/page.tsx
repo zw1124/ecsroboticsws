@@ -11,8 +11,7 @@ const levels = [
   ["BRONZE","$1,000–$1,999","Website logo, Partners page, social media recognition"],
   ["SILVER","$2,000–$4,999","Bronze benefits + team T-shirt logo + pit/event signage"],
   ["GOLD","$5,000–$9,999","Silver benefits + robot logo + larger apparel placement + homepage recognition"],
-  ["PREMIER","$10,000–$49,999","Gold benefits + prominent robot placement + prominent apparel placement + featured partner profile + major season-material recognition"],
-  ["ANCHOR","$50,000+","Premier benefits + highest-level brand placement + major website placement + customized recognition"],
+  ["PREMIER","$10,000","Gold benefits + prominent robot placement + prominent apparel placement + featured partner profile + major season-material recognition"],
 ];
 
 export default function PackagesPage(){return <main id="main" className="px-5 py-24 md:px-[7vw] md:py-32">
