@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = { title: "Packages", description: "Sponsorship packages for RobotECS." };
 const levels = [
@@ -21,7 +20,7 @@ export default function PackagesPage(){return <main id="main" className="px-5 py
       <Table className="min-w-[720px]"><TableHeader><TableRow className="border-white/10"><TableHead>Level</TableHead><TableHead className="text-right">Amount</TableHead><TableHead className="pl-8">Benefits</TableHead></TableRow></TableHeader><TableBody>{levels.map(([level,amount,benefits])=><TableRow key={level} className="border-white/10"><TableCell className="py-6 font-bold">{level}</TableCell><TableCell className="whitespace-nowrap py-6 text-right font-semibold">{amount}</TableCell><TableCell className="py-6 pl-8 leading-relaxed text-muted-foreground">{benefits}</TableCell></TableRow>)}</TableBody></Table>
       <p className="mt-8 max-w-3xl border-l-2 border-primary pl-5 text-sm leading-relaxed text-foreground">In-kind donations of tools, materials, electronics, fabrication services, and other team needs are also welcome. Recognition will be based on the estimated value of the contribution.</p>
       <p className="mt-5 text-xs leading-relaxed text-muted-foreground">Logo, team T-shirt, robot, and pit signage placements are subject to team, school, and competition rules and approval.</p>
-      <Reveal className="mt-16 bg-primary p-8 text-white md:p-16"><p className="text-[10px] font-bold tracking-[.16em]">READY TO BUILD WITH US?</p><h2 className="mt-6 text-5xl font-bold leading-[.9] tracking-[-.07em] md:text-7xl">TURN SUPPORT<br/>INTO A SEASON.</h2><Button asChild variant="link" className="mt-8 h-auto p-0 text-white underline underline-offset-8"><Link href="/contact">Be our sponsor <ArrowUpRight/></Link></Button></Reveal>
+      <section className="mt-8" aria-labelledby="packages-support-heading"><h2 id="packages-support-heading" className="text-xl font-bold">Build with us</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Help our students prepare for their first competition season.</p><Button asChild variant="link" className="mt-3 h-auto p-0 text-primary"><Link href="/contact">Be our sponsor <ArrowUpRight/></Link></Button></section>
     </div>
   </div>
 </main>}

@@ -1,13 +1,36 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = { title: "About", description: "Meet RobotECS, the student-led robotics program at Evergreen Christian School." };
-const principles = [["01","Learn","Ask better questions, test ideas, and document what the team discovers."],["02","Build","Turn concepts into reliable mechanical, electrical, and software systems."],["03","Lead","Own the work, communicate clearly, and help every teammate improve."],["04","Serve","Represent our school with integrity and make engineering useful to others."]];
 
-export default function AboutPage() { return <main id="main">
-  <section className="editorial-hero"><p className="eyebrow">01 / FRC TEAM 12394</p><Reveal><h1>ENGINEERING<br/>WITH PURPOSE.</h1><p>RobotECS is FIRST Robotics Competition Team 12394 at Evergreen Christian School in Loudoun, Virginia. Students lead our engineering, teamwork, and outreach.</p></Reveal></section>
-  <section className="grid gap-10 bg-primary px-5 py-28 text-white md:grid-cols-[.35fr_1.65fr] md:px-[8vw] md:py-40"><p className="eyebrow text-white">02 / OUR MISSION</p><Reveal><p className="max-w-5xl text-4xl font-bold leading-tight tracking-[-.055em] md:text-7xl">We learn by building, lead by serving, and use engineering to make ideas real.</p></Reveal></section>
-  <section className="grid gap-16 px-5 py-28 md:grid-cols-[.75fr_1.25fr] md:px-[8vw] md:py-40"><Reveal><p className="eyebrow">03 / HOW WE WORK</p><h2 className="mt-6 text-5xl font-bold leading-[.9] tracking-[-.07em] md:text-7xl">THE ROBOTECS STANDARD.</h2></Reveal><div>{principles.map(([n,title,copy])=><Reveal key={n}><article className="grid grid-cols-[36px_1fr] gap-4 border-t border-white/15 py-7 md:grid-cols-[42px_150px_1fr]"><span className="text-xs font-bold text-primary">{n}</span><h3 className="text-2xl font-bold">{title}</h3><p className="col-start-2 text-sm leading-relaxed text-muted-foreground md:col-start-3">{copy}</p></article></Reveal>)}</div></section>
-  <section className="bg-white px-5 py-28 text-black md:px-[8vw] md:py-40"><Reveal><p className="eyebrow">04 / OUR FIRST SEASON</p><h2 className="mt-6 text-5xl font-bold tracking-[-.07em] md:text-8xl">TEAM 12394.<br/>LET&apos;S BUILD.</h2><p className="mt-7 max-w-2xl text-lg leading-relaxed text-zinc-600">RobotECS is officially FRC Team 12394. We are developing our skills, preparing our workspace, and building the support needed for our first competition season.</p><Link href="/sponsors" className="mt-8 inline-block border-b-2 border-primary pb-2 font-bold">Support the team ↗</Link></Reveal></section>
-</main> }
+const goals = [
+  ["Learn", "Ask better questions, test ideas, and document what the team discovers."],
+  ["Build", "Turn concepts into reliable mechanical, electrical, and software systems."],
+  ["Lead", "Own the work, communicate clearly, and help every teammate improve."],
+  ["Serve", "Represent our school with integrity and make engineering useful to others."],
+];
+
+export default function AboutPage() {
+  return <main id="main" className="team-page">
+    <section className="team-intro" aria-labelledby="about-heading">
+      <div>
+        <p className="eyebrow">EVERGREEN CHRISTIAN SCHOOL / FRC TEAM 12394</p>
+        <h1 id="about-heading">ABOUT ROBOTECS</h1>
+        <p>RobotECS is FIRST Robotics Competition Team 12394 at Evergreen Christian School in Loudoun, Virginia. Our student-led team learns engineering through designing, building, and working together.</p>
+        <p>Students lead our engineering, teamwork, and outreach. We develop practical skills while learning to communicate, take responsibility, and support one another.</p>
+      </div>
+      <Image src="/assets/robotecs-eagle-cutout.png" alt="RobotECS eagle logo" width={600} height={600} className="team-intro-logo" />
+    </section>
+    <section className="team-section" aria-labelledby="team-goals-heading">
+      <h2 id="team-goals-heading">OUR GOALS</h2>
+      <p className="team-mission">We learn by building, lead by serving, and use engineering to make ideas real.</p>
+      <div className="team-columns team-columns-four">{goals.map(([title, copy]) => <article key={title}><h3>{title}</h3><p>{copy}</p></article>)}</div>
+    </section>
+    <section className="team-section" aria-labelledby="season-heading">
+      <h2 id="season-heading">OUR FIRST SEASON</h2>
+      <p>RobotECS is officially FRC Team 12394. We are developing our skills, preparing our workspace, and building the support needed for our first competition season.</p>
+      <Link href="/sponsors" className="team-link">Support the team ↗</Link>
+    </section>
+  </main>;
+}

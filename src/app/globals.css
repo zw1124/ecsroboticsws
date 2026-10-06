@@ -150,7 +150,7 @@
 .location-map { position: absolute; inset: 0; overflow: hidden; background: #c51f2d; }
 .map-canvas { width: 100%; height: 100%; }
 .location-map::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg,rgba(225,38,52,.16),transparent 38%); mix-blend-mode: multiply; }
-.map-fallback { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: radial-gradient(circle, rgba(255,255,255,.12) 1px, transparent 1.5px) 0 0 / 25px 25px, #c51f2d; color: white; text-align: center; }
+.map-fallback { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; background: #c51f2d; color: white; text-align: center; }
 .map-fallback strong { font-size: clamp(3rem,8vw,8rem); font-weight: 800; line-height: 1; letter-spacing: -.085em; }
 .map-fallback-kicker { margin-bottom: 3rem; font-size: .65rem; font-weight: 700; letter-spacing: .17em; }
 .map-fallback-school { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.5); font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
@@ -160,29 +160,91 @@
 .location-info a { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.25rem; padding-bottom: .3rem; border-bottom: 1px solid #e12634; font-size: .8rem; font-weight: 700; }
 .location-map .mapboxgl-popup-content { padding: .8rem 1rem; border-radius: .2rem; background: #f4f3ed; color: #111; font-size: .75rem; font-weight: 700; }
 .location-map .mapboxgl-popup-tip { border-top-color: #f4f3ed; }
-.contact-hero { min-height: min(52rem,calc(100svh - 6rem)); }
-.contact-direct { display: grid; gap: .7rem; margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.2); }
-.contact-direct span { color: #898985; font-size: .58rem; font-weight: 700; letter-spacing: .16em; }
-.contact-direct a { width: fit-content; padding-bottom: .35rem; border-bottom: 1px solid #e12634; font-size: .9rem; }
-.contact-form-section { display: grid; gap: clamp(3rem,6vw,7rem); grid-template-columns: minmax(0,.75fr) minmax(0,1.25fr); align-items: start; padding: clamp(5rem,10vw,10rem) clamp(1.25rem,8vw,9rem); background: #f4f3ed; color: #0b0b0b; }
-.contact-form-intro { min-width: 0; }
-.contact-form-section h2 { margin-top: 1.5rem; font-size: clamp(3.5rem,6vw,7rem); font-weight: 700; line-height: .88; letter-spacing: -.075em; }
-.contact-form-intro > p:nth-of-type(2) { max-width: 25rem; margin-top: 2rem; color: #575752; font-size: 1rem; line-height: 1.7; }
-.contact-inline-email { display: inline-block; max-width: 100%; margin-top: 2rem; padding-bottom: .35rem; border-bottom: 1px solid #e12634; font-size: .9rem; font-weight: 700; overflow-wrap: anywhere; }
-.contact-form-light { padding-top: 1.5rem; border-top: 3px solid #e12634; }
-.contact-form-light > div:first-child { min-width: 0; }
-.contact-form-light label { color: #0b0b0b; }
-
 @media (max-width: 767px) {
   .editorial-hero { grid-template-columns: 1fr; min-height: auto; gap: 2.5rem; padding-block: 6rem; }
   .editorial-hero h1 { font-size: clamp(3.5rem,17vw,5.2rem); }
-  .contact-form-section { grid-template-columns: 1fr; }
   .location-section { min-height: 38rem; }
   .location-info { left: 1.25rem; bottom: 1.25rem; }
-  .contact-form-section { padding-block: 6rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0s !important; animation-duration: 0s !important; }
   .reveal { opacity: 1; transform: none; transition-delay: 0ms !important; }
 }
+
+/* Compact homepage goals. */
+.home-goals { padding: 3rem clamp(1.25rem, 8vw, 9rem); background: #0b0b0b; }
+.goals-heading { margin-bottom: 1.75rem; }
+.goals-heading h2 { font-size: clamp(2rem, 3vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; }
+.goals-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.goal-story { min-width: 0; }
+.goal-photo { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.goal-photo img { filter: grayscale(.35); }
+.goal-caption { padding-top: .875rem; }
+.goal-caption h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.4; }
+.goal-caption p { margin-top: .375rem; color: #aaa9a4; font-size: 1rem; line-height: 1.5; }
+@media (max-width: 1023px) { .goals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 479px) { .home-goals { padding-block: 2rem; } .goals-grid { gap: 1.25rem .875rem; } .goal-photo { aspect-ratio: 1; } }
+
+.home-sponsors { display: grid; place-items: center; padding: 3rem 1.25rem; color: #252525; background-color: #fffaf3; background-image: url("/assets/sponsors-watercolor-color.png"); background-size: cover; background-position: center; }
+
+/* About and Sponsors follow the homepage's compact content rhythm. */
+.team-page { max-width: 1200px; margin-inline: auto; padding: 2.5rem clamp(1.25rem, 5vw, 4rem) 3rem; }
+.team-intro { display: grid; grid-template-columns: minmax(0, 1fr) 240px; align-items: center; gap: 2.5rem; }
+.team-intro h1, .sponsor-page-banner h1 { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.2; letter-spacing: -.025em; }
+.team-intro h1 { margin-block: 1rem; }
+.team-page p { max-width: 52rem; color: #b8b8b2; font-size: 1rem; line-height: 1.7; }
+.team-intro p + p { margin-top: .875rem; }
+.team-intro .eyebrow { color: var(--primary); font-size: .625rem; }
+.team-intro-logo { width: 100%; height: auto; max-width: 240px; }
+.team-section + .team-section, .team-intro + .team-section { margin-top: 2.5rem; }
+.team-section h2 { margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700; line-height: 1.25; letter-spacing: -.015em; }
+.team-section h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.4; }
+.team-page .team-mission { font-size: 1.125rem; color: var(--foreground); }
+.team-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+.team-columns-four { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 1.25rem; }
+.team-columns p, .sponsor-steps p { margin-top: .5rem; }
+.team-link { display: inline-block; margin-top: 1rem; color: var(--primary); font-size: 1rem; font-weight: 600; }
+.team-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.team-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+.sponsor-page-banner { text-align: center; }
+.sponsor-page-banner p { margin-top: .75rem; font-size: 1rem; }
+.sponsor-steps { display: grid; gap: 1rem; padding-left: 1.25rem; list-style: decimal; }
+.sponsor-steps li { padding-left: .375rem; }
+.sponsor-steps li::marker { color: var(--primary); font-size: .875rem; }
+@media (max-width: 767px) { .team-intro { grid-template-columns: 1fr; gap: 1.25rem; } .team-intro-logo { max-width: 180px; margin-inline: auto; } .team-columns { grid-template-columns: 1fr; gap: 1.25rem; } .team-columns-four { grid-template-columns: repeat(2, minmax(0, 1fr)); } .team-page { padding-block: 2rem; } }
+
+/* Compact contact page with direct details beside the email composer. */
+.contact-page { padding-top: 3rem; padding-bottom: 3rem; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.contact-details h1 { margin-block: 1rem; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.2; letter-spacing: -.025em; }
+.contact-details > p { max-width: 25rem; }
+.contact-details .eyebrow { color: var(--primary); font-size: .625rem; }
+.contact-detail { margin-top: 1.75rem; }
+.contact-detail h2 { margin-bottom: .5rem; font-size: 1rem; font-weight: 600; }
+.contact-email { color: var(--primary); font-size: 1rem; overflow-wrap: anywhere; }
+.contact-email:hover { text-decoration: underline; text-underline-offset: 4px; }
+.contact-email:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+.contact-detail address { color: #b8b8b2; font-style: normal; font-size: .9375rem; line-height: 1.7; }
+.contact-detail .team-link { margin-top: .5rem; font-size: .875rem; }
+.contact-compose h2 { font-size: 1.25rem; font-weight: 600; }
+.contact-compose .contact-form-note { margin-top: .5rem; margin-bottom: 1.25rem; font-size: .875rem; }
+.contact-form { min-width: 0; }
+.contact-form label { color: var(--foreground); font-size: .875rem; }
+.contact-form label span { font-size: .75rem; font-weight: 400; }
+@media (max-width: 767px) { .contact-layout { grid-template-columns: 1fr; gap: 2rem; } .contact-page { padding-block: 2rem; } }
+
+.contact-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.25rem; row-gap: 1.5rem; }
+.contact-field { display: grid; min-width: 0; gap: .625rem; }
+.contact-form input, .contact-form [data-slot="select-trigger"] { width: 100%; min-height: 48px; padding: .75rem .875rem; color: #f4f3ed; background: #131313; border: 1px solid #3c3c3c; border-radius: 4px; font-size: .9375rem; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #92928d; opacity: 1; }
+.contact-form [data-slot="select-value"] { color: #f4f3ed; }
+.contact-message { display: grid; gap: .625rem; margin-top: 1.5rem; }
+.contact-form textarea { width: 100%; min-height: 160px; padding: .875rem; color: #f4f3ed; background: #131313; border: 1px solid #3c3c3c; border-radius: 4px; font-size: .9375rem; line-height: 1.6; }
+.contact-actions { display: flex; flex-direction: column; align-items: flex-start; gap: .875rem; margin-top: 1.5rem; }
+.contact-actions button { display: inline-flex; align-items: center; justify-content: center; gap: .625rem; min-height: 46px; padding: .75rem 1.25rem; background: var(--primary); color: white; border-radius: 4px; font-size: .9375rem; }
+.contact-actions button svg { width: 16px; height: 16px; }
+.contact-actions p { font-size: .8125rem; line-height: 1.5; }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible, .contact-form [data-slot="select-trigger"]:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.contact-compose .contact-form-note { margin-bottom: 1.75rem; }
+@media (max-width: 479px) { .contact-fields { grid-template-columns: 1fr; row-gap: 1.25rem; } }

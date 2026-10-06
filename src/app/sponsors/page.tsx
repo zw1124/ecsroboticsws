@@ -1,16 +1,38 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = { title: "Sponsors", description: "Support RobotECS at Evergreen Christian School." };
-const impact = [["01","TOOLS","Safe, capable equipment for hands-on fabrication."],["02","PARTS","Mechanical, electrical, and control-system components."],["03","ACCESS","Training, events, transportation, and team operations."]];
-const steps = [["01","Choose a level","Select the package that fits your organization and desired recognition."],["02","Start a conversation","We confirm the details, timeline, and school approval requirements."],["03","Build with us","Your support becomes part of the program students experience all season."]];
+const impact = [
+  ["Tools", "Safe, capable equipment for hands-on fabrication."],
+  ["Parts", "Mechanical, electrical, and control-system components."],
+  ["Access", "Training, events, transportation, and team operations."],
+];
+const steps = [
+  ["Choose a level", "Select the package that fits your organization and desired recognition."],
+  ["Start a conversation", "We confirm the details, timeline, and school approval requirements."],
+  ["Build with us", "Your support becomes part of the program students experience all season."],
+];
 
-export default function SponsorsPage(){return <main id="main">
-  <section className="editorial-hero"><p className="eyebrow">01 / FRC TEAM 12394</p><Reveal><h1 className="!text-[clamp(3.3rem,7vw,7.5rem)]">POWER<br/><span className="text-primary">TEAM 12394.</span></h1><p>RobotECS is an official FIRST Robotics Competition team. Your support gives our students the tools, materials, and hands-on experience to compete.</p><Button asChild variant="link" className="mt-7 h-auto p-0 text-white underline decoration-primary underline-offset-8"><Link href="/packages">Explore sponsorship packages <ArrowUpRight/></Link></Button></Reveal></section>
-  <section className="bg-white px-5 py-28 text-black md:px-[8vw]"><p className="eyebrow">02 / YOUR IMPACT</p><div className="mt-14 grid border-t border-black/25 md:grid-cols-3">{impact.map(([n,t,c])=><Reveal key={n}><article className="min-h-64 border-b border-black/25 py-6 md:border-r md:border-b-0 md:px-10 md:first:pl-0 md:last:border-r-0"><span className="text-xs font-bold text-primary">{n}</span><h2 className="mt-12 text-5xl font-bold tracking-[-.06em]">{t}</h2><p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-600">{c}</p></article></Reveal>)}</div></section>
-  <section className="grid gap-16 px-5 py-28 md:grid-cols-[.8fr_1.2fr] md:px-[8vw] md:py-40"><Reveal><p className="eyebrow">03 / HOW IT WORKS</p><h2 className="mt-6 text-5xl font-bold leading-[.92] tracking-[-.07em] md:text-7xl">A PARTNERSHIP,<br/>NOT JUST A LOGO.</h2></Reveal><ol>{steps.map(([n,t,c])=><Reveal key={n}><li className="grid grid-cols-[42px_1fr] gap-5 border-t border-white/15 py-7"><span className="text-xs font-bold text-primary">{n}</span><div><strong className="text-xl">{t}</strong><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c}</p></div></li></Reveal>)}</ol></section>
-  <section className="bg-primary px-5 py-28 text-white md:px-[8vw] md:py-40"><Reveal><p className="eyebrow text-white">04 / READY</p><h2 className="mt-6 text-6xl font-bold tracking-[-.075em] md:text-9xl">BE OUR SPONSOR.</h2><Link href="/contact" className="mt-8 inline-block border-b-2 border-white pb-2 font-bold">Contact RobotECS ↗</Link></Reveal></section>
-</main>}
+export default function SponsorsPage() {
+  return <main id="main">
+    <section className="home-sponsors sponsor-page-banner" aria-labelledby="sponsors-heading">
+      <div><h1 id="sponsors-heading">SPONSORS</h1><p>Help our students build what comes next.</p></div>
+    </section>
+    <div className="team-page">
+      <section className="team-section" aria-labelledby="support-heading">
+        <h2 id="support-heading">SUPPORT TEAM 12394</h2>
+        <p>RobotECS is an official FIRST Robotics Competition team at Evergreen Christian School. Your support gives our students the tools, materials, and hands-on experience to compete.</p>
+        <Link href="/packages" className="team-link">Explore sponsorship packages ↗</Link>
+      </section>
+      <section className="team-section" aria-labelledby="impact-heading">
+        <h2 id="impact-heading">YOUR IMPACT</h2>
+        <div className="team-columns">{impact.map(([title, copy]) => <article key={title}><h3>{title}</h3><p>{copy}</p></article>)}</div>
+      </section>
+      <section className="team-section" aria-labelledby="partnership-heading">
+        <h2 id="partnership-heading">BECOME A SPONSOR</h2>
+        <ol className="sponsor-steps">{steps.map(([title, copy]) => <li key={title}><h3>{title}</h3><p>{copy}</p></li>)}</ol>
+        <Link href="/contact" className="team-link">Contact RobotECS ↗</Link>
+      </section>
+    </div>
+  </main>;
+}
