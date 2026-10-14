@@ -1,0 +1,148 @@
+/* Final shared composition. Artwork is the expressive layer; paper is the pause. */
+:root { --cream: var(--paper); --measure: 1100px; --motion-short: 180ms; }
+main:focus { outline: none; }
+.section { width: min(var(--content), calc(100% - var(--gutter) * 2)); }
+main:not(:has(.hero)) { padding-top: 128px; }
+main:not(:has(.hero)) > .section:first-child { padding-top: 48px; }
+.page-heading h1, .contact h1, .editorial-heading h1 { font-size: clamp(44px, 5vw, 68px); line-height: 1.08; }
+.page-heading { padding-bottom: 16px; }
+.page-heading + .intro { padding-top: 64px; padding-bottom: 80px; }
+.button { min-height: 44px; }
+.button:active { transform: translateY(1px); }
+.text-link { max-width: 100%; }
+.topbar nav a { display: inline-flex; align-items: center; min-height: 36px; }
+.menu-toggle { min-width: 44px; min-height: 44px; }
+.dialog-close { width: 44px; height: 44px; }
+.dialog-backdrop { animation: backdrop-enter 180ms ease-out both; }
+.dialog { border: 1px solid var(--line); border-radius: 12px; animation: dialog-enter 240ms cubic-bezier(.2,.7,.3,1) both; }
+.dialog input, .dialog select, .dialog textarea { min-height: 44px; background: #f8faf4; }
+.dialog input:hover, .dialog select:hover, .dialog textarea:hover { border-color: #a3b397; }
+.dialog textarea { line-height: 1.5; }
+@keyframes backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dialog-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+/* Team facts are an editorial portrait, not invented achievements. */
+.team-overview { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 8vw, 112px); align-items: center; }
+.team-overview h2 { margin-top: 24px; font-size: clamp(38px, 4vw, 54px); }
+.team-overview > div > p:not(.eyebrow) { max-width: 440px; margin: 26px 0; }
+.team-overview__portrait { background: #f0f4e9; padding: 48px; min-height: 330px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.team-overview__pixels { display: grid; grid-template-columns: repeat(4, 22px); gap: 14px; margin: 4px 0 28px; }
+.team-overview__pixels span { width: 22px; height: 22px; background: #77936d; box-shadow: inset -4px -4px #5b7754; }
+.team-overview__pixels span:nth-child(3n) { background: #90aa80; }
+.team-overview__portrait > p { font-size: 16px; margin: 0 0 12px !important; }
+.team-overview__portrait strong { font: 40px/1 mondwest, Georgia, serif; font-weight: 400; }
+.team-overview__portrait > .eyebrow { font-size: 10px; }
+.team-disciplines { padding-top: 24px; }
+.team-disciplines header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-bottom: 56px; }
+.team-disciplines header .eyebrow { padding-top: 8px; }
+.team-disciplines__list article { display: grid; grid-template-columns: 56px .8fr 1fr; align-items: baseline; gap: 32px; padding: 28px 0; border-top: 1px solid var(--line); scroll-margin-top: 116px; }
+.team-disciplines__list h3 { font-size: clamp(28px, 3vw, 38px); }
+.team-disciplines__list p { max-width: 470px; font-size: 15px; line-height: 1.65; }
+/* Sponsorship shares the same gallery language without duplicating its selector. */
+.editorial-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: end; }
+.editorial-heading h1 { margin-top: 24px; }
+.editorial-heading h1 span { color: #819477; }
+.editorial-heading > p { max-width: 355px; font-size: 16px; line-height: 1.7; padding-bottom: 6px; }
+.patrons { padding-bottom: 48px; }
+.patrons__spread { display: grid; grid-template-columns: 1fr .85fr; gap: clamp(48px, 8vw, 112px); align-items: center; margin-top: 72px; }
+.patrons__spread figure img { display: block; width: 100%; height: auto; border-radius: 12px; image-rendering: pixelated; }
+.patrons__spread figcaption { margin-top: 16px; font-size: 12px; color: var(--muted); }
+.patrons__story h2 { font-size: clamp(38px, 4vw, 54px); margin: 24px 0; }
+.patrons__story > p:not(.eyebrow) { max-width: 390px; }
+.patrons__story .button { margin-top: 30px; }
+.patrons__story .text-link { display: flex; width: fit-content; margin-top: 22px; }
+.support-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding-top: 32px; }
+.support-notes article { padding-top: 26px; border-top: 1px solid var(--line); }
+.support-notes h2 { font-size: 32px; margin: 24px 0 18px; }
+.support-notes p:not(.eyebrow) { max-width: 420px; font-size: 15px; }
+.support-notes .text-link { margin-top: 24px; }
+/* Light captions retain contrast and keep each artwork visible. */
+.team-group__art { image-rendering: pixelated; }
+.team-group:is(:hover, :focus-visible) .team-group__art { transform: scale(1.018); }
+.team-group:is(:hover, :focus-visible) { box-shadow: 0 0 0 4px #edf1e7; }
+.team-group__label { background: #173f5270; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.team-group p { color: #fffdf4; }
+/* Mobile season art has its own crop and a readable, bounded text surface. */
+@media (max-width: 900px) {
+ .editorial-heading { gap: 40px; }
+ .team-overview { gap: 40px; }
+ .team-overview__portrait { padding: 32px; }
+ .team-disciplines__list article { grid-template-columns: 32px .75fr 1fr; gap: 24px; }
+ .chapter-still { position: relative; }
+}
+@media (max-width: 720px) {
+ main:not(:has(.hero)) { padding-top: 104px; }
+ main:not(:has(.hero)) > .section:first-child { padding-top: 32px; }
+ .section { width: calc(100% - 48px); }
+ .page-heading h1, .contact h1, .editorial-heading h1 { font-size: clamp(39px, 9.4vw, 54px); }
+ .page-heading + .intro { padding-top: 40px; }
+ .editorial-heading, .team-overview, .team-disciplines header, .patrons__spread, .support-notes { grid-template-columns: 1fr; gap: 32px; }
+ .editorial-heading > p { max-width: 440px; }
+ .patrons__spread { margin-top: 40px; }
+ .patrons__spread figure { max-width: 480px; }
+ .patrons__story { padding-top: 8px; }
+ .team-overview__portrait { min-height: 280px; }
+ .team-disciplines header { margin-bottom: 32px; gap: 20px; }
+ .team-disciplines__list article { grid-template-columns: 28px 1fr; gap: 16px; padding: 24px 0; }
+ .team-disciplines__list p { grid-column: 2; }
+ .support-notes { padding-top: 16px; }
+ .support-notes h2 { font-size: 30px; }
+ .season-takeover { min-height: 840px; padding: 144px 24px 36px; justify-content: flex-start; }
+ .season-takeover > img { object-position: 72% center; }
+ .season-takeover__copy { padding: 22px; background: #14678dbd; backdrop-filter: blur(12px); border: 1px solid #ffffff30; border-radius: 12px; }
+ .season-takeover h2 { font-size: clamp(34px, 7.6vw, 46px); margin: 20px 0 24px; }
+ .season-takeover__copy > p:not(.eyebrow) { font-size: 14px; }
+ .season-takeover .button { margin-top: 24px; }
+ .season-process { min-height: 96px; }
+ .season-takeover__caption { bottom: 26px; font-size: 9px; }
+ .contact { gap: 48px; }
+ .contact-letter { padding: 32px; min-height: 390px; }
+ .contact-letter > .forget-me-not { width: 145px; margin-bottom: 20px; }
+ .contact-letter p { font-size: 32px; }
+ .contact-email { overflow-wrap: anywhere; }
+ .dialog-backdrop { padding: 12px; }
+ .dialog { max-height: calc(100dvh - 24px); padding: 32px 24px; }
+ .dialog input, .dialog select, .dialog textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .dialog, .dialog-backdrop { animation: none; }
+ .button:active, .team-group:is(:hover, :focus-visible) .team-group__art { transform: none; }
+}
+.season-motion-toggle { position: absolute; z-index: 3; right: 28px; bottom: 28px; width: 44px; height: 44px; display: grid; place-items: center; color: #fffdf4; background: #13567766; border: 1px solid #ffffff66; border-radius: 8px; font-size: 16px; }
+.season-motion-toggle:hover { background: #135677aa; }
+.season-motion-toggle[aria-pressed='true'] { background: #135677aa; }
+@media (prefers-reduced-motion: reduce) { .season-motion-toggle { display: none; } }
+
+.field-label { display: inline; color: var(--ink) !important; }
+.field-label > span { color: var(--muted); }
+.topbar:not(.on-paper) .brand img { filter: none; }
+@media (min-width: 901px) and (max-height: 679px) { .chapter-still { position: relative; min-height: auto; } }
+@media (max-width: 360px) {
+ .season-takeover__copy { padding: 18px; }
+ .season-takeover h2 { font-size: 30px; }
+ .sponsor-tier__name { font-size: 18px; gap: 4px; }
+}
+
+/* Keep the four existing illustrations unobscured; captions sit below the art. */
+.team-group {
+ display: flex; flex-direction: column; aspect-ratio: auto;
+ overflow: visible; background: none; border-radius: 0;
+}
+.team-group__art {
+ position: relative; inset: auto; width: 100%; aspect-ratio: 1;
+ flex: none; border-radius: 16px;
+}
+.team-group__label {
+ position: static; padding: 18px 4px 0; border: 0;
+ background: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+ border-radius: 0; color: var(--ink);
+}
+.team-group__label::before { display: none; }
+.team-group p { color: var(--muted); }
+.team-group:is(:hover, :focus-visible) { box-shadow: none; }
+.team-group:is(:hover, :focus-visible) .team-group__art {
+ box-shadow: 0 0 0 4px #edf1e7;
+}
+@media (max-width: 600px) {
+ .team-group { aspect-ratio: auto; }
+ .team-group__label { padding: 18px 4px 0; }
+}

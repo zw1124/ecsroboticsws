@@ -1,16 +1,11 @@
-# Goal-section photography
+# Asset origins
 
-These images are illustrative stock photography, not photographs of ECS Robotics. Each source page marked the image free to use under the [Unsplash License](https://unsplash.com/license) when selected.
+- Campus illustration: original AI-edited pixel-art interpretation based on school photographs supplied by the user. Landscaping is illustrative.
+- Season robot, team-group scenes, sponsorship scenes and meadow: original AI-generated concept artwork. These are illustrations, not photographs or proof of completed team hardware.
+- Blue forget-me-not canvas: code-native pixel drawing based on the user's supplied botanical design.
+- robotecs-mark-dark.svg / robotecs-mark-light.svg: original code-native pixel flower/robot symbol.
+- frc-official.png: unmodified FIRST Robotics Competition identity; retains its owner's rights.
+- mondwest.woff2, af.woff2 and arrow.svg were obtained from the design reference at https://www.generalintelligencecompany.com/ during prototype development. Their existing ownership and licensing apply; this repository does not grant redistribution rights or establish a font license.
+- WebP files are optimized delivery derivatives of the original artwork; local PNG masters are preserved separately.
 
-- `assets/goals/learn.jpg` — [Vladislav Klapin / Unsplash](https://unsplash.com/photos/close-up-of-a-green-circuit-board-with-electronic-components-LsBh7MyF5kA)
-- `assets/goals/build.jpg` — [Jakub Żerdzicki / Unsplash](https://unsplash.com/photos/a-3d-printer-is-in-action-in-a-workshop-zWIFZeu5qeE)
-- `assets/goals/lead.jpg` — [Oso-rio / Unsplash](https://unsplash.com/photos/a-robot-arm-works-in-a-factory-setting-nM71nHjH4Vk)
-- `assets/goals/serve.jpg` — [Emma Zhang / Unsplash](https://unsplash.com/photos/a-classroom-with-windows-and-computers-sits-empty-bYyytCaEAOY)
-
-# Student guide photography
-
-- `student.html` hero image — [First Robotics Competition (830928) / NASA, via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:First_Robotics_Competition_(830928).jpg)
-
-# Footer mark
-
-- `assets/frc-logo-reverse.png` — Official FIRST Robotics Competition reverse logo, from [FIRST Brand and Logo Files](https://www.firstinspires.org/brand/logos-guidelines). Used in connection with ECS Robotics team materials.
+Public team facts and sponsorship amounts were supplied by the user. No company endorsements or sponsor relationships are implied.

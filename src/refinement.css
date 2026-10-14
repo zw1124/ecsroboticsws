@@ -1,0 +1,114 @@
+/* Shared art direction: warm paper, evergreen ink, measured editorial rhythm. */
+:root { --paper: #fefffc; --ink: #293c30; --muted: #596958; --sage: #eaf0e3; }
+body { color: var(--ink); }
+p { color: var(--muted); }
+.topbar, .topbar.on-paper { color: #29332c; background: #fefffcf2; border-color: #dde3d9; box-shadow: 0 3px 12px #182c2014; }
+.topbar nav a { transition: color 180ms ease; }
+.topbar nav a:hover { color: #607b50; opacity: 1; }
+.hero { background: #224636; }
+.hero-image { object-fit: cover; object-position: center 45%; }
+.hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg,#102b3638,transparent 38%,#12332318); }
+.hero-title { z-index: 1; top: clamp(132px, 17vh, 205px); width: 900px; }
+.hero-title h1 { font-size: clamp(32px, 4.2vw, 62px); line-height: 1.05; letter-spacing: -.025em; color: #fffdf1; text-shadow: 0 2px 18px #17392f45; }
+.location { z-index: 1; color: #293c30; font-size: 12px; background: #fefffcde; padding: 7px 12px; border-radius: 4px; }
+.hero-card-track { z-index: 2; }
+.hero-card { background: #203f31e8; border: 1px solid #e9f0df38; box-shadow: 0 8px 40px #102a251a; backdrop-filter: blur(10px); }
+.hero-card h2 { color: #fffdf1; }
+.hero-card p { color: #edf1e6; }
+.hero-divider { display: none; }
+.section { width: min(1200px, calc(100% - 112px)); padding-top: 104px; padding-bottom: 104px; }
+.eyebrow { color: #667b59; letter-spacing: .12em; font-size: 11px; line-height: 1.6; }
+.page-heading { padding-top: 170px; padding-bottom: 32px; }
+.page-heading h1, .sponsors-story h1, .contact h1, .sponsors h1 { font-size: clamp(44px, 5.4vw, 76px); line-height: 1.04; letter-spacing: -.035em; }
+.page-heading .eyebrow, .sponsors-story > .eyebrow, .contact .eyebrow { margin-bottom: 26px; }
+.intro { min-height: 660px; gap: 100px; }
+.intro-copy p { font-size: 17px; line-height: 1.75; }
+.intro-copy h2 { font-size: clamp(30px, 3vw, 44px); line-height: 1.14; margin-top: 40px; }
+.principles { padding-top: 56px; }
+.principles-heading h2 { font-size: clamp(42px, 4.6vw, 64px); }
+.principles-grid { gap: 44px; }
+.principles-grid article p { font-size: 15px; line-height: 1.75; color: var(--muted); }
+.principles-grid article h3 { color: var(--ink); }
+.principles-closing { color: #5b6e50; }
+.workshop-section > header > p:last-child, .discipline-copy p, .join-build p { color: var(--muted); font-size: 16px; line-height: 1.7; }
+.discipline-nav button { min-height: 64px; color: #64745b; }
+.discipline-copy { padding-top: 28px; }
+.discipline-copy h3 { font-size: 30px; }
+.join-build { padding-top: 64px; padding-bottom: 112px; }
+.join-build h2 { font-size: clamp(44px, 5vw, 70px); }
+.sponsors-story { padding-top: 170px; }
+.sponsors-story > p:not(.eyebrow) { max-width: 520px; font-size: 18px; line-height: 1.7; margin-top: 30px; }
+.support-grid { gap: 80px; margin: 72px 0 48px; }
+.support-grid h2 { font-size: 32px; margin-bottom: 18px; }
+.support-grid p { max-width: 430px; font-size: 16px; line-height: 1.75; }
+.sponsors-story > .text-link { margin-left: 28px; }
+.sponsors.section, .contact.section { padding-top: 170px; }
+.packages button { padding: 30px 0; transition: background 180ms ease, color 180ms ease; }
+.packages button:hover { background: #edf2e7; color: #365c35; }
+.packages button > span:first-child { font-family: mondwest, Georgia, serif; font-size: 32px; }
+.sponsor-note p { font-size: 14px; line-height: 1.7; color: #5b6b53; }
+.contact > div > p:not(.eyebrow) { font-size: 17px; line-height: 1.7; }
+.contact address { font-size: 16px; line-height: 1.8; color: #52644b; }
+.contact-letter { background: #eaf0e3; }
+.contact-letter p { color: #34503a; }
+.button, .text-link { transition: color 180ms ease, background 180ms ease, opacity 180ms ease, transform 180ms ease; }
+.button:hover { transform: translateY(-2px); opacity: 1; }
+@media(max-width: 1023px) { .section { width: calc(100% - 64px); } .intro { gap: 48px; } .principles-grid { gap: 24px; } }
+@media(max-width: 600px) {
+  .section { width: calc(100% - 48px); padding-top: 72px; padding-bottom: 72px; }
+  .topbar { gap: 12px; }
+  .hero-title { top: 142px; padding: 0 24px; }
+  .hero-title h1 { font-size: 34px; max-width: 330px; margin: auto; }
+  .hero-image { object-position: 58% top; }
+  .location { display: none; }
+  .hero-card { padding: 28px; border-radius: 18px; }
+  .hero-card h2 { font-size: 36px; }
+  .hero-card p { font-size: 15px; }
+  .page-heading, .sponsors-story, .sponsors.section, .contact.section { padding-top: 140px; }
+  .intro { min-height: 0; gap: 24px; }
+  .intro-copy h2 { font-size: 32px; }
+  .support-grid { gap: 36px; margin: 48px 0 36px; }
+  .sponsors-story > .text-link { display: flex; margin: 24px 0 0; }
+  .join-build { padding-bottom: 80px; }
+  .packages button > span:first-child { font-size: 27px; }
+}
+@media(prefers-reduced-motion: reduce) { .button:hover { transform: none; } }
+/* The wordmark occupies the sky opening; the team number is its quiet signature. */
+.hero-title { top: clamp(156px, 21vh, 230px); width: min(900px, 88%); }
+.hero-title h1 { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.hero-wordmark { display: block; font-size: clamp(54px, 6.8vw, 100px); line-height: .95; letter-spacing: -.035em; }
+.hero-team-number { display: block; font: 500 13px/1.5 af, Arial, sans-serif; letter-spacing: .24em; color: #fffdf1; }
+@media(max-width:600px) {
+  .hero-title { top: 156px; width: 100%; padding: 0 24px; }
+  .hero-title h1 { max-width: none; gap: 12px; }
+  .hero-wordmark { font-size: clamp(44px, 12vw, 68px); }
+  .hero-team-number { font-size: 11px; letter-spacing: .22em; }
+}
+/* Quiet identity and translucent surfaces let the illustration lead. */
+.hero-title { top: clamp(126px, 16vh, 174px); width: min(620px, 86%); }
+.hero-title h1 { gap: 7px; text-shadow: 0 1px 12px #18382e3d; }
+.hero-wordmark { font-size: clamp(30px, 2.8vw, 42px); line-height: 1.12; letter-spacing: -.018em; }
+.hero-team-number { font: 400 clamp(25px, 2.2vw, 33px)/1.15 mondwest, Georgia, serif; letter-spacing: -.012em; }
+.topbar:not(.on-paper) {
+  color: #fffdf5;
+  background: #edf5e224;
+  border-color: #ffffff4d;
+  box-shadow: 0 2px 8px #1835281c;
+  backdrop-filter: blur(14px);
+}
+.topbar:not(.on-paper) .brand img { filter: brightness(0) invert(1); }
+.topbar:not(.on-paper) nav a:hover { color: #fff; opacity: .75; }
+.hero-card {
+  background: linear-gradient(115deg, #1f3e316b, #5e745353);
+  border-color: #f1f6e84d;
+  box-shadow: 0 3px 14px #18352812;
+  backdrop-filter: blur(24px);
+}
+.location { background: none; padding: 0; border-radius: 0; color: #fffdf5; text-shadow: 0 1px 8px #1b392f66; }
+@media(max-width:600px) {
+  .hero-title { top: 132px; width: 100%; }
+  .hero-title h1 { gap: 6px; }
+  .hero-wordmark { font-size: 30px; }
+  .hero-team-number { font-size: 25px; }
+  .hero-card { background: #2949389c; backdrop-filter: blur(18px); }
+}

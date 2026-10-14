@@ -1,33 +1,23 @@
-# RobotECS Website
+# RobotECS — FRC Team 12394
 
-The official website for RobotECS, FIRST Robotics Competition Team 12394 at Evergreen Christian School.
+React/Vite pixel-art website for the student robotics team at Evergreen Christian School in Loudoun, Virginia.
 
-## Stack
+## Local development
 
-- Next.js App Router
-- React and TypeScript
-- shadcn/ui with Radix UI
-- Tailwind CSS v4
-- Static export for flexible hosting
-
-## Development
-
-```bash
-npm install
+```sh
+npm ci
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+## Cloudflare Pages
 
-## Verification
+- Build command: `npm run build`
+- Build output directory: `out`
+- Project root: repository root
+- Node.js: 22 recommended
 
-```bash
-npm run lint
-npm run build
-```
+The build creates `out/` for compatibility with the previous Cloudflare Pages configuration. It also preserves `dist/client`, `dist/server` and Sites hosting metadata. No Next.js runtime or Mapbox token is needed.
 
-The production-ready static site is generated in `out/`.
+`public/_redirects` supports client-side routes and redirects legacy `.html` URLs. Contact forms open a draft in the visitor's email app; they do not submit to a backend or send email automatically.
 
-## Mapbox on Cloudflare Pages
-
-Set `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` to your `pk.` public token in the Pages project's **Production** environment variables, then redeploy. Next.js includes this value when it builds the static site, so changing the variable alone does not update an existing deployment. The map fills the homepage location section; if the token is missing or Mapbox fails to load, the section displays a red RobotECS fallback.
+See ASSET-CREDITS.md for artwork origins and licensing notes.

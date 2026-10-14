@@ -1,0 +1,31 @@
+.site-footer {
+  position: relative;
+  --footer-height: min(clamp(280px, 29vw, 400px), 55svh);
+  height: var(--footer-height);
+  max-height: 55svh;
+  clip-path: inset(0);
+  isolation: isolate;
+  background: #fefffc;
+}
+.site-footer__scene {
+  position: fixed;
+  inset: auto 0 0;
+  height: var(--footer-height);
+  display: flex;
+  align-items: flex-end;
+  padding: 28px max(var(--gutter), calc((100% - var(--content)) / 2));
+  background: linear-gradient(to bottom, #fefffc 0%, #fefffc00 22%, #fefffc00 52%, #fefffce8 86%, #fefffc 100%), url('/assets/footer-meadow.webp') center 54% / cover no-repeat;
+  will-change: opacity;
+}
+.site-footer__identity { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; width: 100%; }
+.site-footer__identity img { display: block; width: 158px; height: auto; }
+.site-footer__identity p { margin: 0; color: #34482d; font: 400 32px/1 mondwest, Georgia, serif; text-align: right; letter-spacing: -.015em; }
+.site-footer__identity p span { display: block; margin-top: 8px; font: 500 10px/1.5 af, Arial, sans-serif; letter-spacing: .16em; color: #526149; }
+@media (max-width: 720px) {
+  .site-footer { --footer-height: min(280px, 55svh); }
+  .site-footer__scene { padding: 24px; background-size: cover, 100% auto; background-position: center, center 42px; background-color: #fefffc; }
+  .site-footer__identity { gap: 16px; align-items: center; }
+  .site-footer__identity img { width: 128px; }
+  .site-footer__identity p { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { .site-footer__scene { opacity: 1; will-change: auto; } }
