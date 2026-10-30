@@ -2,4 +2,6 @@
 /sponsors.html /sponsors 301
 /packages.html /packages 301
 /contact.html /contact 301
+/student / 302
+/student/* / 302
 /* /index.html 200

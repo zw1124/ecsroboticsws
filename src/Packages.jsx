@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import './packages.css';
+import SeasonBudget from './SeasonBudget';
 
 const tiers = [
   { key: 'community', art: 'community-simple', headline: ['Your name.', 'Part of our story.'], benefit: 'Logo on our Sponsors page', benefits: ['Logo on our Sponsors page'] },
@@ -157,7 +158,19 @@ export default function Packages({ levels, onChoose }) {
       <div className="sponsor-recognition__benefits"><p className="eyebrow">YOUR PARTNERSHIP INCLUDES</p><ul>{tier.benefits.map(benefit => <li key={benefit} data-benefit={benefit}><span className="sponsor-benefit__check" aria-hidden="true">✓</span>{benefit}</li>)}</ul></div>
     </article>
 
+    <SeasonBudget/>
+
     <div className="sponsor-packages__other"><h2>Have something else in mind?</h2><p>Tools, materials, electronics, and fabrication services are welcome, too.</p><button className="text-link" onClick={() => onChoose('General question')}>Let’s talk <PackageArrow/></button></div>
+    <section className="sponsor-information" aria-labelledby="sponsor-information-title">
+      <h2 id="sponsor-information-title">Sponsorship Information</h2>
+      <div className="sponsor-information__copy">
+        <p>robotECS is currently raising funds to participate in the 2027 FIRST Robotics Competition season.</p>
+        <p>Some sponsorship benefits, including logos on our robot and recognition at competitions, depend on whether our team is able to build a robot and compete.</p>
+        <p>If we’re unable to participate in 2027, some of these benefits may not be available. We will contact affected sponsors to discuss the situation and any changes to their sponsorship benefits.</p>
+        <p>Any website or social media recognition mentioned in our sponsorship packages refers to the robotECS team website (<a href="https://robotecs.tech">https://robotecs.tech</a>) and our team’s social media accounts, not Evergreen Christian School’s official website or social media.</p>
+        <p>All monetary donations are processed through Evergreen Christian School’s official donation form. Any decisions about donation funds will be handled by the school according to its donation terms.</p>
+      </div>
+    </section>
     <p className="sponsor-packages__terms">Recognition is subject to team, school, and competition rules and approval.</p>
   </section>;
 }

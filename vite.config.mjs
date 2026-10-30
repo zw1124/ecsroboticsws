@@ -9,6 +9,7 @@ export default defineConfig({
     include: ["react", "react-dom/client"],
   },
   server: {
+    fs: { deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/.student-data/**'] },
     host: "0.0.0.0",
     allowedHosts: ["terminal.local"],
     warmup: {

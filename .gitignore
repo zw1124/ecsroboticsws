@@ -8,3 +8,7 @@ out/
 .vercel/
 .wrangler/
 *.log
+
+.student-data/
+.dev.vars
+.dev.vars.*
