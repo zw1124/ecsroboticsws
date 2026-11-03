@@ -90,3 +90,27 @@
 .hero .home-sponsor-dock .home-sponsor{background:transparent;margin:0;padding:18px 28px}
 .home-sponsor-dock .home-sponsor img{filter:none;opacity:1;width:100px}
 @media(max-width:650px){.home-sponsor-dock{bottom:0;min-height:76px}.hero .home-sponsor-dock .home-sponsor{padding:14px 22px}.home-sponsor-dock .home-sponsor img{width:88px}}
+
+/* Engineering entry: every raster layer uses the same source and final geometry. */
+.entry-sequence{position:fixed;inset:0;z-index:1000;background:white;overflow:hidden;color:#101214;animation:entry-handoff .55s ease 2.5s both}
+.entry-build-number{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;font:400 clamp(65px,11vw,165px)/1.1 'Iowan Old Style',Palatino,serif;letter-spacing:-.045em;white-space:nowrap;animation:entry-number-out .55s ease .75s both}
+.entry-parts-art{position:absolute;max-width:none;overflow:visible}
+.entry-skip{position:absolute;bottom:28px;right:5.2%;border:0;background:transparent;color:#85898d;font:inherit;font-size:12px;padding:12px;cursor:pointer;animation:entry-number-out .3s ease 2.1s both}.entry-skip span{margin-left:12px}
+.frame-trace{stroke-dasharray:1;stroke-dashoffset:1;animation:trace-structure 1.1s cubic-bezier(.4,0,.2,1) .95s both}
+.entry-blue-trace{stroke-dasharray:1;stroke-dashoffset:1;animation:trace-structure .65s cubic-bezier(.4,0,.2,1) .8s both,trace-blue-out .4s ease 2.1s both}
+.wheel-reveal{transform-box:fill-box;transform-origin:center;animation:wheel-grow .6s cubic-bezier(.2,.65,.3,1) 1.4s both}
+.wheel-b{animation-delay:1.5s}.wheel-c{animation-delay:1.6s}.wheel-d{animation-delay:1.7s}
+.interior-reveal{animation:part-appear .55s ease 1.65s both}
+.entry-part{animation:part-appear .6s ease both}.entry-part-motor{animation-delay:1.55s}.entry-part-controller{animation-delay:1.75s}.entry-part-battery{animation-delay:1.95s}
+.site-entering .hero-art{animation:none!important}
+.site-entering .hero h1,.site-entering .hero .identity{animation:entry-copy-arrive .6s ease 2.4s both}
+@keyframes trace-structure{to{stroke-dashoffset:0}}
+@keyframes trace-blue-out{to{opacity:0}}
+@keyframes wheel-grow{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes part-appear{from{opacity:0}to{opacity:1}}
+@keyframes entry-number-out{to{opacity:0}}
+@keyframes entry-handoff{to{opacity:0}}
+@keyframes entry-copy-arrive{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(max-width:650px){.entry-build-number{font-size:14vw}}
+@media(prefers-reduced-motion:reduce){.entry-sequence{display:none}}
+.construction-complete{animation:part-appear .3s ease 2.15s both}
