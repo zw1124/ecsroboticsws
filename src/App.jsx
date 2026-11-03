@@ -1,68 +1,197 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './styles.css';
-import AboutChapter from './AboutChapter';
-import LowerHome from './LowerHome';
-import ScrollChapter from './ScrollChapter';
-import Footer from './Footer';
-import Hero from './Hero';
-import Packages from './Packages';
-import ForgetMeNot from './ForgetMeNot';
-import TeamOverview from './TeamOverview';
-import Sponsors from './Sponsors';
-import './finish.css';
-const A='/assets/';
-const levels=[['Community','Up to $999','Logo on our Sponsors page'],['Bronze','$1,000–$1,999','Priority placement on our Sponsors page and a social media thank-you'],['Silver','$2,000–$4,999','Bronze benefits, team T-shirt logo and pit signage'],['Gold','$5,000–$9,999','Silver benefits and your logo on our robot'],['Premier','$10,000+','Gold benefits and our most prominent logo placement']];
-function Arrow(){return <span className="arrow" aria-hidden="true"><img src={A+'arrow.svg'} alt=""/></span>}
-export function App(){
- const page=location.pathname.replace(/\/$/,'')||'/';
- const home=page==='/';
- const [menu,setMenu]=useState(false),[light,setLight]=useState(false),[dialog,setDialog]=useState(''),[sent,setSent]=useState(false);
- useEffect(()=>{const descriptions = { '/': 'RobotECS is FRC Team 12394 at Evergreen Christian School in Loudoun, Virginia. Twelve students learning, organizing, and building together.', '/about': 'Meet RobotECS: 12 students learning robotics through Outreach, Programming, Build, and Design.', '/sponsors': 'Support the students behind RobotECS, FRC Team 12394. Explore sponsorship and in-kind contributions.', '/packages': 'Explore five RobotECS sponsorship levels, recognition, and ways to support our first season.', '/contact': 'Start a conversation with RobotECS, FRC Team 12394 at Evergreen Christian School.' };document.querySelector('meta[name=description]').content = descriptions[page] || descriptions['/'];document.title=`${home?'RobotECS':page.slice(1).replace(/^./,c=>c.toUpperCase())+' — RobotECS'} · Team 12394`;const scroll=()=>setLight(!document.getElementById('home')||document.getElementById('home').getBoundingClientRect().bottom<75);scroll();window.addEventListener('scroll',scroll,{passive:true});return()=>window.removeEventListener('scroll',scroll)},[]);
- useEffect(()=>{document.body.style.overflow=menu||dialog?'hidden':'';const escape=e=>{if(e.key==='Escape'){setMenu(false);setDialog('')}};window.addEventListener('keydown',escape);return()=>{document.body.style.overflow='';window.removeEventListener('keydown',escape)}},[menu,dialog]);
- useEffect(()=>{const hero=document.getElementById('home'),card=hero?.querySelector('.hero-card');if(!hero||!card)return;const size=()=>{const mobile=window.innerWidth<=600;const first=window.innerHeight;hero.style.setProperty('--card-top',`${Math.max(220,first-card.offsetHeight-(mobile?80:100))}px`)};const observer=new ResizeObserver(size);observer.observe(card);window.addEventListener('resize',size);size();return()=>{observer.disconnect();window.removeEventListener('resize',size)}},[]);
- useEffect(()=>{if(location.hash){const frame=requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'instant'}));return()=>cancelAnimationFrame(frame)}},[]);
- const nav=[['About','/about'],['Sponsors','/sponsors'],['Contact','/contact']];
- const close=()=>setMenu(false);
- const returnFocus = useRef(null);
- useEffect(() => {
-  if (!dialog && !menu) return;
-  returnFocus.current = document.activeElement;
-  const header = document.querySelector('.topbar');
-  if (dialog) header.inert = true;
-  const frame = requestAnimationFrame(() => {
-   const initial = dialog ? document.querySelector('.dialog input') : document.querySelector('#mobile-menu a');
-   initial?.focus();
-  });
-  const trap = event => {
-   if (event.key !== 'Tab') return;
-   const scope = document.querySelector(dialog ? '.dialog' : '#mobile-menu');
-   const candidates = [...scope.querySelectorAll('a[href],button,input,select,textarea')];
-   if (menu && !dialog) candidates.unshift(header.querySelector('.menu-toggle'));
-   const items = candidates.filter(item => !item.disabled && item.getClientRects().length);
-   const first = items[0], last = items.at(-1);
-   if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-   else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-  };
-  document.addEventListener('keydown', trap);
-  return () => { cancelAnimationFrame(frame); header.inert = false; document.removeEventListener('keydown', trap); returnFocus.current?.focus(); };
- }, [dialog, menu]);
- function draft(e){e.preventDefault();const data=new FormData(e.currentTarget);const body=`Name: ${data.get('name')}\nEmail: ${data.get('email')}\nOrganization: ${data.get('organization')}\n\n${data.get('message')}`;setSent(true);window.location.href=`mailto:kajin30@ecsloudoun.org?subject=${encodeURIComponent('RobotECS — '+data.get('topic'))}&body=${encodeURIComponent(body)}`}
- return <><a className="skip" href="#main-content">Skip to content</a><header className={'topbar '+(light||menu?'on-paper':'')+(home?' intro-nav':'')}><a href="/" className="brand" onClick={close} aria-label="RobotECS home"><img src={A+((light||menu)?'robotecs-mark-dark.svg':'robotecs-mark-light.svg')} alt=""/></a><nav aria-label="Primary navigation">{nav.map(([label,to])=><a key={label} href={to} aria-current={page===to?'page':undefined}>{label}</a>)}</nav><a className="button dark" href="/packages" onClick={close}>Be our sponsor <Arrow/></a><button className="menu-toggle" aria-label={menu?'Close menu':'Open menu'} aria-expanded={menu} aria-controls="mobile-menu" onClick={()=>setMenu(!menu)}>{menu?'×':<span className="hamburger"/>}</button></header>
- {menu&&<div className="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation"><nav aria-label="Mobile navigation"><a href="/" onClick={close}>Home</a>{nav.map(([label,to])=><a key={label} href={to} onClick={close}>{label}</a>)}<a href="/packages" onClick={close}>Packages</a></nav><p>© RobotECS · FRC Team 12394 · 2026</p></div>}
- <main id="main-content" tabIndex={-1} inert={menu || Boolean(dialog)}>{home&&<Hero/>}
- {page==='/about'&&<div className="page-heading section"><p className="eyebrow">ABOUT ROBOTECS</p><h1>Built by students.<br/>Building together.</h1></div>}
- {(home||page==='/about')&&<><section className="intro section" id="about"><div className="flower"><ForgetMeNot/></div><div className="intro-copy"><p className="eyebrow">STUDENT LED / FIRST ROBOTICS COMPETITION</p><p>RobotECS is FIRST Robotics Competition Team 12394 at Evergreen Christian School in Loudoun, Virginia.</p><p>Our 12 confirmed team members are learning the fundamentals and organizing our Outreach, Programming, Build, and Design groups. We’re building our skills and our team together.</p><h2>We learn by building,<br/>lead by serving, and use<br/>engineering to make ideas real.</h2></div></section>
- {home ? <ScrollChapter/> : <AboutChapter/>}
- </>}
- {home&&<LowerHome/>}
- {page==='/about'&&<TeamOverview/>}
- {page==='/sponsors'&&<Sponsors/>}
- {page==='/packages'&&<Packages levels={levels} onChoose={name=>{setDialog(name);setSent(false)}}/>}
- {page==='/contact'&&<section className="contact section" id="contact"><div><p className="eyebrow">LET'S BUILD SOMETHING TOGETHER</p><h1>A little support.<br/>A world of possibility.</h1><p>Support our first season, share your expertise, or ask about the team. A conversation is a good place to start.</p><button className="button dark" onClick={()=>{setDialog('General question');setSent(false)}}>Contact RobotECS <Arrow/></button><a className="text-link contact-email" href="mailto:kajin30@ecsloudoun.org">kajin30@ecsloudoun.org</a><address>Evergreen Christian School<br/>21336 Evergreen Mills Road<br/>Leesburg, VA 20175</address><a className="text-link" href="https://www.google.com/maps/dir/?api=1&destination=21336+Evergreen+Mills+Road,+Leesburg,+VA+20175" target="_blank" rel="noreferrer">Get directions <Arrow/></a></div><div className="contact-letter"><ForgetMeNot/><p>Good things grow<br/>when we build together.</p><span>RobotECS · FRC Team 12394</span></div></section>
- }
- {!home&&! ['/about','/sponsors','/packages','/contact'].includes(page)&&<section className="section"><h1>Page not found</h1><a href="/">Return home</a></section>}
- </main><div inert={menu || Boolean(dialog)}><Footer /></div>
-
- {dialog&&<div className="dialog-backdrop" onClick={e=>{if(e.target===e.currentTarget)setDialog('')}}><section className="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><button className="dialog-close" onClick={()=>setDialog('')} aria-label="Close contact form">×</button><p className="eyebrow">START A CONVERSATION</p><h2 id="dialog-title">Let's build together.</h2><form onSubmit={draft}><label>Your name<input name="name" required autoComplete="name"/></label><label>Your email<input name="email" type="email" required autoComplete="email"/></label><label><span className="field-label">Organization <span>(optional)</span></span><input name="organization" autoComplete="organization"/></label><label>Topic<select name="topic" defaultValue={dialog==='General question'?dialog:dialog+' sponsorship'}><option>General question</option>{levels.map(([n])=><option key={n}>{n} sponsorship</option>)}</select></label><label>Message<textarea name="message" required rows="3" defaultValue={dialog==='General question'?'':`I'd like to learn more about ${dialog.toLowerCase()} sponsorship.`}/></label><button className="button dark" type="submit">Prepare message <Arrow/></button><p className="form-note" role="status">{sent?'Your email draft is ready. If your email app did not open, email kajin30@ecsloudoun.org directly.':'Opens your email app with a draft for you to review and send.'}</p></form></section></div>}</>;
+import { useState, useRef, useEffect } from 'react';
+import { Sponsors, Packages, Contact, Information } from './Pages';
+import './pages.css';
+function FooterMechanism() {
+  const svg = useRef(null);
+  const pointer = useRef(null);
+  const frame = useRef(0);
+  const nodes = useRef(Array.from({length:45}, (_,i) => ({x:(i%15)*110-50,y:55+Math.floor(i/15)*80+(i%2)*12,dx:0,dy:0,vx:0,vy:0})));
+  const edges = useRef(nodes.current.flatMap((_,i) => {
+    const result=[];
+    if(i%15<14) result.push([i,i+1]);
+    if(i<30) {result.push([i,i+15]); if(i%15<14 && i%2===0) result.push([i,i+16]); if(i%15>0 && i%2===1) result.push([i,i+14]);}
+    return result;
+  }));
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+  function animate() {
+    const root=svg.current;if(!root)return;
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let energy=0;
+    nodes.current.forEach((n,i)=>{
+      const p=pointer.current;const distance=p?Math.hypot(n.x-p.x,n.y-p.y):1000;
+      const influence=Math.max(0,1-distance/230);
+      const tx=p?(p.x-n.x)*influence*.12:0,ty=p?(p.y-n.y)*influence*.16:0;
+      n.vx=(n.vx+(tx-n.dx)*.065)*.78;n.vy=(n.vy+(ty-n.dy)*.065)*.78;
+      n.dx=reduced?0:n.dx+n.vx;n.dy=reduced?0:n.dy+n.vy;
+      energy+=Math.abs(n.vx)+Math.abs(n.vy)+Math.abs(tx-n.dx)+Math.abs(ty-n.dy);
+      const el=root.querySelector(`[data-node="${i}"]`);el.setAttribute('cx',n.x+n.dx);el.setAttribute('cy',n.y+n.dy);el.style.fill=influence>.12?'#778f9a':'#d8dadd';
+    });
+    edges.current.forEach(([a,b],i)=>{
+      const n=nodes.current[a],m=nodes.current[b],el=root.querySelector(`[data-edge="${i}"]`);
+      el.setAttribute('x1',n.x+n.dx);el.setAttribute('y1',n.y+n.dy);el.setAttribute('x2',m.x+m.dx);el.setAttribute('y2',m.y+m.dy);
+      const p=pointer.current;const d=p?Math.hypot((n.x+m.x)/2-p.x,(n.y+m.y)/2-p.y):1000;
+      el.style.stroke=d<200?(i%3===0?'#a88763':i%3===1?'#6d91a2':'#82917c'):'#d8dadd';
+    });
+    frame.current=energy>.015?requestAnimationFrame(animate):0;
+  }
+  function move(event) {
+    const r=svg.current.getBoundingClientRect();const scale=r.height/300;
+    pointer.current={x:(event.clientX-r.left-r.width/2)/scale+720,y:(event.clientY-r.top)/scale};
+    if(!frame.current)frame.current=requestAnimationFrame(animate);
+  }
+  function leave(){pointer.current=null;if(!frame.current)frame.current=requestAnimationFrame(animate);}
+  return <div className="footer-linkage" onPointerMove={move} onPointerDown={move} onPointerLeave={leave} onPointerUp={e=>{if(e.pointerType!=='mouse')leave();}} aria-hidden="true">
+    <svg ref={svg} viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice">
+      {edges.current.map(([a,b],i)=><line key={i} data-edge={i} x1={nodes.current[a].x} y1={nodes.current[a].y} x2={nodes.current[b].x} y2={nodes.current[b].y}/>)}
+      {nodes.current.map((n,i)=><circle key={i} data-node={i} cx={n.x} cy={n.y} r="4.5"/>)}
+    </svg>
+  </div>;
 }
-export default App;
+function HomeSponsor() {
+  const [opacity,setOpacity]=useState(1);
+  useEffect(()=>{
+    let frame=0;
+    const update=()=>{frame=0;const hold=Math.min(320,innerHeight*.4);setOpacity(scrollY<hold?1:0);};
+    const scroll=()=>{if(!frame)frame=requestAnimationFrame(update);};
+    update();window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',scroll);
+    return()=>{window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scroll);cancelAnimationFrame(frame);};
+  },[]);
+  return <div className="home-sponsor-dock" style={{opacity,visibility:opacity===0?'hidden':'visible',pointerEvents:opacity===0?'none':'auto'}}>
+    <a className="home-sponsor" href="/sponsors" aria-label="Our sponsor QTS — view our sponsors" tabIndex={opacity===0?-1:0}><span>Supported by</span><img src="/assets/qts-logo.png" alt="QTS" width="748" height="357"/></a>
+  </div>;
+}
+const groups = ['Outreach', 'Programming', 'Build', 'Design'];
+const content = {
+  Programming: { labels: ['Sense', 'Decide', 'Move'], image: 'programming.png', alt: 'Concept diagram connecting a distance sensor, controller, and robot chassis.', description: 'Learning how code becomes motion.' },
+  Build: { labels: ['Prepare', 'Assemble', 'Refine'], image: 'build.png', alt: 'Mechanical parts, an exploded wheel hub, and an assembled wheel module.', description: 'Making the pieces work together.' },
+  Design: { labels: ['Sketch', 'Measure', 'Model'], image: 'design.png', alt: 'A gripper mechanism evolving from a pencil sketch through measured drawings to a CAD concept.', description: 'An idea, considered from every angle.' },
+  Outreach: { labels: ['Plan', 'Share', 'Connect'], image: 'outreach.png', alt: 'An outreach notebook, a tabletop robot demonstration, and communication materials.', description: 'Sharing what we learn. Inviting others in.' },
+};
+const regions = { Programming: [[0,36],[36,61],[61,100]], Build: [[0,33],[33,72],[72,100]], Design: [[0,33],[33,65],[65,100]], Outreach: [[0,34],[34,67],[67,100]] };
+const explanations = {
+  Programming: ['Read the world through sensors.', 'Use code to make a decision.', 'Turn that decision into movement.'],
+  Build: ['Get to know the parts and tools.', 'Bring the components together.', 'Check the fit and improve it.'],
+  Design: ['Explore a mechanism on paper.', 'Work through dimensions and clearances.', 'Develop the idea in CAD.'],
+  Outreach: ['Plan what we want to share.', 'Make robotics easier to understand.', 'Start a conversation with our community.'],
+};
+function DiagramPlayer({group, data}) {
+  const [step, setStep] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reduced, setReduced] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [documentVisible, setDocumentVisible] = useState(!document.hidden);
+  const root = useRef(null);
+  const progress = useRef([]);
+  const elapsed = useRef(0);
+  const stepRef = useRef(step);
+  stepRef.current = step;
+  useEffect(() => {
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReduced(preference.matches);
+    update(); preference.addEventListener('change', update);
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {threshold:.25});
+    observer.observe(root.current);
+    const visibility = () => setDocumentVisible(!document.hidden);
+    document.addEventListener('visibilitychange', visibility);
+    return () => { preference.removeEventListener('change', update); observer.disconnect(); document.removeEventListener('visibilitychange', visibility); };
+  }, []);
+  useEffect(() => {
+    if (paused || reduced || !visible || !documentVisible) return;
+    let frame; let last;
+    const tick = now => {
+      if(last !== undefined) elapsed.current += Math.min(now-last,100);
+      last=now;
+      if(elapsed.current >= 4200) { elapsed.current=0; setStep(value => (value+1)%3); }
+      progress.current.forEach((bar,index) => { if(bar) bar.style.transform = `scaleX(${index===stepRef.current ? elapsed.current/4200 : 0})`; });
+      frame=requestAnimationFrame(tick);
+    };
+    frame=requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [paused, reduced, visible, documentVisible]);
+  function choose(index) { elapsed.current=0; setStep(index); progress.current.forEach(bar => {if(bar)bar.style.transform='scaleX(0)';}); }
+  return <div ref={root} className="diagram-player">
+    <div className="diagram-labels">{data.labels.map((label,index)=><button key={label} aria-pressed={step===index} onClick={()=>choose(index)}>{label}</button>)}</div>
+    <div className={`diagram-stage stage-${step}`}>
+      <img className="diagram diagram-muted" src={`/assets/${data.image}`} alt={data.alt} />
+      {regions[group].map(([left,right],index)=><img key={index} className={`diagram diagram-highlight ${step===index?'is-active':''}`} src={`/assets/${data.image}`} alt="" aria-hidden="true" style={{clipPath:`inset(0 ${100-right}% 0 ${left}%)`}} />)}
+    </div>
+    <p className="step-explanation">{explanations[group][step]}</p>
+    <div className="player-controls"><div className="step-track" aria-label="Diagram steps">{data.labels.map((label,index)=><button key={label} className={step===index?'current':''} aria-label={`Show step ${index+1}: ${label}`} aria-pressed={step===index} onClick={()=>choose(index)}><span className="step-indicator"><span ref={el => progress.current[index]=el}/></span></button>)}</div><button className="play-toggle" aria-label={reduced?'Next diagram step':paused?'Play diagram':'Pause diagram'} aria-pressed={paused} onClick={()=>{if(reduced){choose((step+1)%3);}else setPaused(value=>!value);}}>{paused||reduced?<span className="play-mark"/>:<span className="pause-mark"/>}</button></div>
+  </div>;
+}
+export function App() {
+  const [active, setActive] = useState('Programming');
+  const tabs = useRef([]);
+  const [headerHidden, setHeaderHidden] = useState(false);
+  const [headerRaised, setHeaderRaised] = useState(false);
+  useEffect(() => {
+    let last = Math.max(0, window.scrollY); let accumulated=0; let direction=0; let frame=0;
+    const update = () => {
+      frame=0; const y=Math.max(0,window.scrollY); const delta=y-last; last=y;
+      setHeaderRaised(y>90);
+      if(y<70){setHeaderHidden(false);accumulated=0;return;}
+      if(Math.abs(delta)<1)return;
+      const next=delta>0?1:-1;
+      accumulated=next===direction?accumulated+Math.abs(delta):Math.abs(delta); direction=next;
+      if(accumulated>12)setHeaderHidden(next===1);
+    };
+    const scroll = () => {if(!frame)frame=requestAnimationFrame(update);};
+    window.addEventListener('scroll',scroll,{passive:true});
+    return () => {window.removeEventListener('scroll',scroll);cancelAnimationFrame(frame);};
+  }, []);
+  const path = location.pathname.replace(/\/$/,'') || '/';
+  const home = path === '/';
+  useEffect(() => {document.title = `${({'/':'Built together.','/sponsors':'Sponsors','/packages':'Sponsorship','/contact':'Contact','/site-information':'Website information'})[path] || 'Page not found'} — robotECS`;}, [path]);
+  const data = content[active];
+  function onKey(event, index) {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % groups.length;
+    if (event.key === 'ArrowLeft') next = (index + groups.length - 1) % groups.length;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = groups.length - 1;
+    if (next !== undefined) { event.preventDefault(); setActive(groups[next]); tabs.current[next].focus(); }
+  }
+  return <div>
+    <header className={`header ${headerHidden?'header-hidden':''} ${headerRaised?'header-raised':''}`} onFocusCapture={()=>setHeaderHidden(false)}><a className="wordmark" href={home?'#home':'/'} aria-label="robotECS home">robotECS</a><nav aria-label="Main navigation"><a href={home?'#team':'/#team'}>Team</a><a href="/sponsors" aria-current={path==='/sponsors'?'page':undefined}>Sponsors</a><a href="/contact" aria-current={path==='/contact'?'page':undefined}>Contact</a></nav></header>
+    <main>
+      {home && <>
+      <section className="hero" id="home" aria-labelledby="hero-title">
+        <img className="hero-art" src="/assets/chassis-refined.png" alt="Illustration of a robot chassis and its components." fetchPriority="high" />
+        <h1 id="hero-title">Built together.</h1>
+        <p className="identity">FRC Team 12394 <span aria-hidden="true">·</span> Evergreen Christian School</p>
+        <HomeSponsor/>
+      </section>
+      <section className="team" id="team" aria-labelledby="team-title">
+        <h2 id="team-title">One team. Four ways to build.</h2>
+        <div className="tabs" role="tablist" aria-label="Team groups">{groups.map((group,i) => <button key={group} ref={el => tabs.current[i]=el} role="tab" id={`tab-${group}`} aria-selected={active===group} aria-controls="group-panel" tabIndex={active===group?0:-1} onClick={() => setActive(group)} onKeyDown={e => onKey(e,i)}>{group}</button>)}</div>
+        <div role="tabpanel" id="group-panel" aria-labelledby={`tab-${active}`} className={`panel ${active.toLowerCase()}`} tabIndex={0}>
+          <div key={active} className="panel-inner">
+            <DiagramPlayer key={active} group={active} data={data} />
+          </div>
+        </div>
+        <a className="text-link" href="#team-details">Explore the team <span aria-hidden="true">↗</span></a>
+      </section>
+      <section className="season-story" id="team-details" aria-labelledby="season-title">
+        <h2 id="season-title">A team in the making.</h2>
+        <p className="season-intro">Twelve students. A shared curiosity.<br/>Preparing for the 2027 season.</p>
+        <div className="season-notes"><div><span>01</span><h3>Learn the fundamentals.</h3><p>Mechanical, electrical, and programming skills.</p></div><div><span>02</span><h3>Find our roles.</h3><p>Four groups, learning to work as one team.</p></div><div><span>03</span><h3>Prepare for the field.</h3><p>Build the skills and support for our first season.</p></div></div>
+      </section>
+      <section className="support-note" id="support" aria-labelledby="support-title"><h2 id="support-title">Help the next idea take shape.</h2><a className="text-link" href="/packages">Support our first season <span aria-hidden="true">↗</span></a><p className="support-fine">Explore sponsorship and ways to help.</p></section>
+      </>}
+      {path==='/sponsors' && <Sponsors/>}
+      {path==='/packages' && <Packages/>}
+      {path==='/contact' && <Contact/>}
+      {path==='/site-information' && <Information/>}
+      {!['/','/sponsors','/packages','/contact','/site-information'].includes(path) && <section className="page-intro document-page"><h1>Page not found.</h1><a className="text-link" href="/">Return home ↗</a></section>}
+    </main>
+    <footer className="site-footer">
+      <FooterMechanism/>
+      <div className="footer-body"><div className="footer-columns">
+        <div><h2>robotECS</h2><a href="/">Home</a><a href="/#team">Our team</a><a href="/#team-details">Our season</a></div>
+        <div><h2>Support</h2><a href="/sponsors">Ways to help</a><a href="/packages">Sponsorship</a><a href="/contact?topic=In-kind%20support">In-kind gifts</a></div>
+        <div><h2>Connect</h2><a href="/contact">Contact us</a><a href="mailto:kajin30@ecsloudoun.org">Email the team</a></div>
+        <div><h2>Information</h2><a href="/site-information#privacy">Privacy</a><a href="/packages#sponsorship-information">Sponsorship conditions</a><a href="/site-information">Website information</a></div>
+      </div><div className="footer-baseline"><span>robotECS © {new Date().getFullYear()}</span><span>FRC Team 12394 · Evergreen Christian School</span></div></div>
+    </footer>
+  </div>;
+}

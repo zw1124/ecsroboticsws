@@ -1,23 +1,7 @@
-# RobotECS — FRC Team 12394
+# robotECS
 
-React/Vite pixel-art website for the student robotics team at Evergreen Christian School in Loudoun, Virginia.
+FRC Team 12394 website. React + Vite.
 
-## Local development
+Run `npm ci` and `npm run dev`. Production: `npm run build`. Cloudflare Pages output: `out`.
 
-```sh
-npm ci
-npm run dev
-```
-
-## Cloudflare Pages
-
-- Build command: `npm run build`
-- Build output directory: `out`
-- Project root: repository root
-- Node.js: 22 recommended
-
-The build creates `out/` for compatibility with the previous Cloudflare Pages configuration. It also preserves `dist/client`, `dist/server` and Sites hosting metadata. No Next.js runtime or Mapbox token is needed.
-
-`public/_redirects` supports client-side routes and redirects legacy `.html` URLs. Contact forms open a draft in the visitor's email app; they do not submit to a backend or send email automatically.
-
-See ASSET-CREDITS.md for artwork origins and licensing notes.
+Contact prepares a draft in the visitor’s email app; it does not send or store messages.
