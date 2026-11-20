@@ -9,7 +9,29 @@ export const tiers=[
 ];
 function Link({href,children}){return <a className="text-link" href={href}>{children} <span aria-hidden="true">↗</span></a>}
 function Giving(){return <a className="giving-button" href={giving} target="_blank" rel="noreferrer">Open school donation form <span aria-hidden="true">↗</span></a>}
-export function SponsorInformation(){return <section className="sponsor-information" id="sponsorship-information"><h2>Sponsorship information</h2><p>robotECS is currently raising funds to participate in the 2027 FIRST Robotics Competition season.</p><p>Some sponsorship benefits, including logos on our robot and recognition at competitions, depend on whether our team is able to build a robot and compete. If we’re unable to participate in 2027, some benefits may not be available. We will contact affected sponsors to discuss the situation and any changes to their sponsorship benefits.</p><p>Website and social media recognition refers to the robotECS team website and our team’s social media accounts, not Evergreen Christian School’s official channels.</p><p>All monetary donations are processed through Evergreen Christian School’s official donation form. Decisions about donation funds are handled by the school according to its donation terms. Please review the school’s current form before donating.</p><p>Recognition is subject to school approval and competition rules. Website sponsor logos use a consistent display size; priority placement refers to order, not a larger logo.</p></section>}
+export function SponsorInformation() {
+  return <section className="sponsor-information" id="sponsorship-information" aria-labelledby="sponsorship-title">
+    <header className="sponsor-terms-heading">
+      <h2 id="sponsorship-title">Sponsorship information</h2>
+      <p>robotECS is raising funds for its first FIRST Robotics Competition season in 2027.</p>
+    </header>
+    <div className="sponsor-terms">
+      <article>
+        <h3>Donations through the school</h3>
+        <p>Evergreen Christian School processes all monetary donations and handles the funds according to its donation terms. Review the school’s current form before donating.</p>
+        <Link href={giving}>View the school’s donation form</Link>
+      </article>
+      <article>
+        <h3>How we recognize sponsors</h3>
+        <p>Recognition appears on robotECS channels and is subject to school approval and competition rules. Priority placement means an earlier position on the sponsor list. All logos use a consistent display size.</p>
+      </article>
+      <article>
+        <h3>If our season plans change</h3>
+        <p>Robot logos and event recognition depend on our ability to build and compete. If we’re unable to participate in 2027, we’ll contact affected sponsors to discuss which benefits are available.</p>
+      </article>
+    </div>
+  </section>;
+}
 export function Sponsors(){return <div className="document-page sponsors-page sponsors-focused">
   <section className="sponsors-heading"><h1>Our sponsors.</h1><p>Thank you for helping our team move forward.</p></section>
   <div className="sponsor-roster">
@@ -26,7 +48,36 @@ export function Sponsors(){return <div className="document-page sponsors-page sp
   </div>
   <section className="sponsors-next sponsors-contact-note" aria-label="Sponsorship enquiries"><p>Interested in supporting robotECS?</p><Link href="/contact">Let’s talk</Link></section>
 </div>}
-export function Packages(){const [selected,setSelected]=useState(2);const tier=tiers[selected];return <div className="document-page packages-page"><section className="page-intro"><h1>A place for<br/>your support.</h1><p>Five ways to support our first season.</p></section><section className="tier-explorer" aria-label="Sponsorship levels"><div className="tier-options">{tiers.map((item,index)=><button key={item.name} aria-pressed={selected===index} onClick={()=>setSelected(index)}><span>{item.name}</span><span>{item.price}</span></button>)}</div><div className="tier-detail" key={tier.name}><div><span className="tier-number">0{selected+1} / 05</span><h2>{tier.name}</h2><p className="tier-price">{tier.price}</p><Link href={`/contact?topic=${encodeURIComponent(tier.name+' sponsorship')}`}>Discuss this level</Link></div><div><h3>Planned recognition</h3><ul>{tier.benefits.map(benefit=><li key={benefit}>{benefit}</li>)}</ul><p className="small-note">Robot and competition recognition depends on our ability to build and participate. <a href="#sponsorship-information">Read sponsorship conditions.</a></p></div></div></section><section className="giving-section"><h2>Ready to help?</h2><p>Use the school’s official donation form, or contact us to discuss a partnership.</p><Giving/><p className="small-note">No payment is collected on this website.</p></section><section className="budget-section"><div><h2>What support<br/>helps make possible.</h2><p>Our working season estimate is $19,400–$24,400. These are planning estimates, not confirmed invoices or official fee quotations.</p></div><div className="budget-list">{[['Team registration','$6,500'],['Additional event','$3,200'],['Robot materials','$4,000–$5,500'],['Tools & safety','$800–$1,200'],['Travel & lodging','$2,500–$4,000'],['Apparel & branding','$500–$800'],['Outreach & printing','$400–$700'],['Contingency','$1,500–$2,500']].map(([name,cost])=><div key={name}><span>{name}</span><span>{cost}</span></div>)}</div></section><SponsorInformation/></div>}
+export function Packages() {
+  const [selected, setSelected] = useState(2);
+  const tier = tiers[selected];
+  return <div className="document-page packages-page">
+    <section className="page-intro">
+      <h1>Sponsorship.</h1>
+      <p>Help robotECS prepare for its first FRC season.</p>
+    </section>
+    <section className="tier-explorer" aria-label="Sponsorship levels">
+      <div className="tier-options" role="group" aria-label="Choose a sponsorship level">
+        {tiers.map((item, index) => <button type="button" key={item.name} aria-pressed={selected === index} aria-controls="tier-details" onClick={() => setSelected(index)}>
+          <span>{item.name}</span><span>{item.price}</span>
+        </button>)}
+      </div>
+      <div className="tier-detail" id="tier-details" aria-live="polite">
+        <div className="tier-summary">
+          <h2>{tier.name}</h2>
+          <p className="tier-price">{tier.price}</p>
+          <Link href={`/contact?topic=${encodeURIComponent(tier.name + ' sponsorship')}`}>Discuss {tier.name} sponsorship</Link>
+        </div>
+        <div className="tier-recognition">
+          <h3>Planned recognition</h3>
+          <ul>{tier.benefits.map(benefit => <li key={benefit}>{benefit}</li>)}</ul>
+          <p className="small-note">Robot and competition recognition depends on our ability to build and participate. <a href="#sponsorship-information">Read sponsorship conditions.</a></p>
+        </div>
+      </div>
+    </section>
+    <section className="giving-section"><h2>Ready to help?</h2><p>Use the school’s official donation form, or contact us to discuss a partnership.</p><Giving/><p className="small-note">No payment is collected on this website.</p></section><section className="budget-section"><div><h2>What support<br/>helps make possible.</h2><p>Our working season estimate is $19,400–$24,400. These are planning estimates, not confirmed invoices or official fee quotations.</p></div><div className="budget-list">{[['Team registration','$6,500'],['Additional event','$3,200'],['Robot materials','$4,000–$5,500'],['Tools & safety','$800–$1,200'],['Travel & lodging','$2,500–$4,000'],['Apparel & branding','$500–$800'],['Outreach & printing','$400–$700'],['Contingency','$1,500–$2,500']].map(([name,cost])=><div key={name}><span>{name}</span><span>{cost}</span></div>)}</div></section><SponsorInformation/>
+  </div>;
+}
 export function Contact(){const topic=new URLSearchParams(location.search).get('topic')||'General question';const [prepared,setPrepared]=useState(false);function prepare(event){event.preventDefault();const data=new FormData(event.currentTarget);const subject=`robotECS — ${data.get('topic')}`;const body=`Name: ${data.get('name')}\nEmail: ${data.get('email')}\nOrganization: ${data.get('organization')||'—'}\n\n${data.get('message')}`;location.href=`mailto:kajin30@ecsloudoun.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;setPrepared(true)}return <div className="document-page contact-page">
 <section className="contact-opening"><h1>A conversation<br/>is a good start.</h1><a className="contact-primary-email" href="mailto:kajin30@ecsloudoun.org">kajin30@ecsloudoun.org <span aria-hidden="true">↗</span></a><p>Sponsorship, materials, expertise—or simply a question.</p></section>
 <section className="contact-options contact-single"><div className="contact-writing"><h2>Write to the team.</h2><p className="writing-note">Prepare an email here, then review and send it in your email app.</p><form onSubmit={prepare}><label>Name<input required name="name" autoComplete="name"/></label><label>Email<input required type="email" name="email" autoComplete="email"/></label><label>Organization <span>(optional)</span><input name="organization" autoComplete="organization"/></label><label>Topic<select name="topic" defaultValue={topic}><option>General question</option><option>In-kind support</option>{tiers.map(t=><option key={t.name}>{t.name} sponsorship</option>)}</select></label><label>Message<textarea required name="message" rows="4"/></label><button className="giving-button" type="submit">Prepare email <span aria-hidden="true">↗</span></button><p className="small-note" role="status">{prepared?'Your email app should open with a draft. Review and send it there. If it did not open, use the email address above.':'Nothing is sent automatically.'}</p><p className="small-note">Please don’t include payment details or sensitive student information. If you’re under 13, ask a parent or guardian to contact us. <a href="/site-information#privacy">Privacy information</a>.</p></form><address className="contact-location">Evergreen Christian School<br/>21336 Evergreen Mills Road · Leesburg, VA 20175<br/><span>Visits and deliveries by prior arrangement.</span></address></div></section></div>}
