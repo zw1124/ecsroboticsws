@@ -1,0 +1,46 @@
+.header nav a {
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+}
+
+.header nav a:is(:hover, :focus-visible, [aria-current="page"]) {
+  background-size: 100% 1px;
+  text-decoration: none;
+}
+
+.footer-columns a {
+  text-decoration: underline 1px transparent;
+  text-underline-offset: 4px;
+}
+
+.footer-columns a:is(:hover, :focus-visible) { text-decoration-color: currentColor; }
+
+.contact-writing :is(input, select, textarea):focus { border-color: #777e84; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .header nav a { transition: background-size .22s cubic-bezier(.2,.7,.25,1), color .18s ease; }
+  .footer-columns a { transition: text-decoration-color .18s ease, color .18s ease; }
+  .contact-writing :is(input, select, textarea) { transition: border-color .18s ease; }
+
+  :is(.tabs, .season-tabs, .tier-options, .diagram-labels) button,
+  :is(.play-toggle, .giving-button) {
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease,
+      transform .2s cubic-bezier(.2,.7,.25,1);
+  }
+
+  :is(.tabs, .season-tabs, .tier-options, .diagram-labels) button:active,
+  :is(.play-toggle, .giving-button):active { transform: scale(.97); }
+
+  .giving-button > span { transition: transform .2s cubic-bezier(.2,.7,.25,1); }
+  .giving-button:is(:hover, :focus-visible) > span { transform: translate(2px, -2px); }
+  .team .panel-inner { animation: diagram-settle .26s cubic-bezier(.2,.7,.25,1) both; }
+  .sponsor-roster-mark img { transition: transform .25s cubic-bezier(.2,.7,.25,1); }
+
+  @media (hover: hover) {
+    .sponsor-roster article:hover .sponsor-roster-mark img { transform: translateY(-3px); }
+  }
+}
+
+@keyframes diagram-settle {
+  from { opacity: .65; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 84">
+  <defs><path id="wave" d="M0 43.00 C46.67 48.24 93.33 53.00 140 53.00 C186.67 53.00 233.33 48.24 280 43.00 C326.67 37.76 373.33 33.00 420 33.00 C466.67 33.00 513.33 37.76 560 43.00"/></defs>
+  <g font-family="Menlo,monospace" xml:space="preserve">
+    <text transform="translate(0 -19)" fill="#596571" opacity=".58" font-size="11"><textPath href="#wave" textLength="558" lengthAdjust="spacing">* &amp; $ # * # &amp; $ * &amp; $ # * $ &amp; # * # $ &amp; * # $ &amp; *</textPath></text>
+    <text fill="#202a35" opacity=".85" font-size="19" font-weight="600"><textPath href="#wave" textLength="558" lengthAdjust="spacing"># <tspan fill="#147fcd">&amp;</tspan> * $ # * <tspan fill="#d44738">&amp;</tspan> # $ * # <tspan fill="#aa7214">$</tspan> &amp; * $ # &amp; # * $ # &amp; *</textPath></text>
+    <text transform="translate(0 19)" fill="#596571" opacity=".67" font-size="13"><textPath href="#wave" textLength="558" lengthAdjust="spacing">&amp; # * $ &amp; * # $ * # &amp; $ * &amp; # $ * &amp; # * $ &amp; # $ *</textPath></text>
+  </g>
+</svg>

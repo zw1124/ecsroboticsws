@@ -1,0 +1,77 @@
+.home-experience .season-story {
+  max-width: 1100px;
+  padding-block: clamp(60px, 8vw, 100px);
+  color: #202428;
+  background: #fff;
+  text-align: center;
+}
+.home-experience .season-story h2 {
+  font: 400 clamp(33px, 4vw, 46px)/1.08 'Iowan Old Style', Palatino, serif;
+  letter-spacing: -.035em;
+}
+.home-experience .season-story .season-intro { margin: 15px auto 0; font-size: 16px; color: #59616a; }
+.season-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 28px 0 39px; }
+.season-tabs button { border: 0; border-radius: 100px; min-height: 42px; padding: 8px 16px; background: transparent; color: inherit; cursor: pointer; transition: background .18s ease; }
+.season-tabs button:hover { background: #f5f5f5; }
+.season-tabs button[aria-selected=true] { background: #eaeaea; }
+.season-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); text-align: left; }
+.season-panel[hidden] { display: none; }
+.season-panel article { padding: 24px clamp(16px, 2.5vw, 35px); }
+.season-panel article + article { border-left: 1px solid #e8e8e8; }
+.season-panel h3 { font-size: 17px; font-weight: 500; margin: 16px 0 7px; }
+.season-panel p { color: #5f6469; font-size: 15px; line-height: 1.55; margin: 0; }
+.home-experience .support-note { padding-block: clamp(94px, 13vw, 180px); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .season-panel:not([hidden]) { animation: home-section-arrive .28s ease both; }
+  @supports (animation-timeline: view()) {
+    .home-experience.site-ready .hero { view-timeline-name: --home-hero; }
+    .home-experience.site-ready .hero-art {
+      animation: home-art-push linear both;
+      animation-timeline: --home-hero;
+      animation-range: exit 0% exit 85%;
+    }
+    .home-experience.site-ready .hero h1,
+    .home-experience.site-ready .hero .identity {
+      animation: home-copy-away linear both;
+      animation-timeline: --home-hero;
+      animation-range: exit 5% exit 82%;
+    }
+    .home-experience .team > h2,
+    .home-experience .season-story > h2,
+    .home-experience .support-note > h2 {
+      animation: home-section-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 31%;
+    }
+    .home-experience .team > .panel {
+      animation: home-diagram-arrive linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 43%;
+    }
+    .home-experience .team > .panel:focus-within { animation: none; }
+  }
+}
+@keyframes home-art-push {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to { transform: translateY(-8vh) scale(1.13); opacity: .22; }
+}
+@keyframes home-copy-away {
+  to { transform: translateY(-26px); opacity: .19; }
+}
+@keyframes home-section-arrive {
+  from { transform: translateY(26px); opacity: .22; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes home-diagram-arrive {
+  from { transform: translateY(37px) scale(.95); opacity: .32; }
+  to { transform: none; opacity: 1; }
+}
+@media(max-width:650px) {
+  .home-experience .season-story { padding-inline: 24px; }
+  .season-tabs { margin-bottom: 24px; }
+  .season-panel { grid-template-columns: 1fr; }
+  .season-panel article { padding-inline: 0; }
+  .season-panel article + article { border-left: 0; border-top: 1px solid #e8e8e8; }
+}
+.home-experience .team-character-mark { width: min(680px, 88vw); }

@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 170">
+  <g fill="#28333d" font-family="Menlo,monospace" font-weight="600" font-size="14" text-anchor="middle" dominant-baseline="central">
+    <text x="22" y="40" fill="#147fcd">#</text>
+    <text x="33" y="40">&amp;</text>
+    <text x="44" y="40">*</text>
+    <text x="55" y="40">$</text>
+    <text x="66" y="40">#</text>
+    <text x="22" y="55">$</text>
+    <text x="22" y="70">*</text>
+    <text x="22" y="85" fill="#a46c14">&amp;</text>
+    <text x="33" y="85">*</text>
+    <text x="44" y="85">$</text>
+    <text x="55" y="85">#</text>
+    <text x="22" y="100">#</text>
+    <text x="22" y="115">$</text>
+    <text x="22" y="130">*</text>
+    <text x="88" y="40" fill="#c5463a">&amp;</text>
+    <text x="99" y="40">*</text>
+    <text x="110" y="40">$</text>
+    <text x="121" y="40">#</text>
+    <text x="88" y="55">#</text>
+    <text x="132" y="55">#</text>
+    <text x="88" y="70">$</text>
+    <text x="132" y="70">$</text>
+    <text x="88" y="85">*</text>
+    <text x="99" y="85">$</text>
+    <text x="110" y="85">#</text>
+    <text x="121" y="85">&amp;</text>
+    <text x="88" y="100">&amp;</text>
+    <text x="110" y="100" fill="#c5463a">$</text>
+    <text x="88" y="115" fill="#147fcd">#</text>
+    <text x="121" y="115">$</text>
+    <text x="88" y="130">$</text>
+    <text x="132" y="130">$</text>
+    <text x="165" y="40">$</text>
+    <text x="176" y="40">#</text>
+    <text x="187" y="40">&amp;</text>
+    <text x="198" y="40" fill="#c5463a">*</text>
+    <text x="154" y="55">&amp;</text>
+    <text x="154" y="70">#</text>
+    <text x="154" y="85">$</text>
+    <text x="154" y="100">*</text>
+    <text x="154" y="115" fill="#c5463a">&amp;</text>
+    <text x="165" y="130">&amp;</text>
+    <text x="176" y="130">*</text>
+    <text x="187" y="130" fill="#a46c14">$</text>
+    <text x="198" y="130">#</text>
+    <text x="264" y="40">*</text>
+    <text x="253" y="55">#</text>
+    <text x="264" y="55" fill="#a46c14">&amp;</text>
+    <text x="264" y="70">#</text>
+    <text x="264" y="85">$</text>
+    <text x="264" y="100">*</text>
+    <text x="264" y="115">&amp;</text>
+    <text x="253" y="130">$</text>
+    <text x="264" y="130" fill="#c5463a">#</text>
+    <text x="275" y="130">&amp;</text>
+    <text x="319" y="40">*</text>
+    <text x="330" y="40">$</text>
+    <text x="341" y="40" fill="#c5463a">#</text>
+    <text x="308" y="55">#</text>
+    <text x="352" y="55">#</text>
+    <text x="352" y="70" fill="#c5463a">$</text>
+    <text x="341" y="85">&amp;</text>
+    <text x="330" y="100">$</text>
+    <text x="319" y="115">&amp;</text>
+    <text x="308" y="130">$</text>
+    <text x="319" y="130">#</text>
+    <text x="330" y="130" fill="#a46c14">&amp;</text>
+    <text x="341" y="130">*</text>
+    <text x="352" y="130">$</text>
+    <text x="374" y="40">*</text>
+    <text x="385" y="40">$</text>
+    <text x="396" y="40">#</text>
+    <text x="407" y="40" fill="#a46c14">&amp;</text>
+    <text x="418" y="55">&amp;</text>
+    <text x="418" y="70" fill="#a46c14">#</text>
+    <text x="385" y="85">#</text>
+    <text x="396" y="85" fill="#c5463a">&amp;</text>
+    <text x="407" y="85">*</text>
+    <text x="418" y="100">*</text>
+    <text x="418" y="115">&amp;</text>
+    <text x="374" y="130">#</text>
+    <text x="385" y="130" fill="#147fcd">&amp;</text>
+    <text x="396" y="130">*</text>
+    <text x="407" y="130">$</text>
+    <text x="451" y="40">#</text>
+    <text x="462" y="40" fill="#147fcd">&amp;</text>
+    <text x="473" y="40">*</text>
+    <text x="440" y="55">*</text>
+    <text x="484" y="55">*</text>
+    <text x="440" y="70">&amp;</text>
+    <text x="484" y="70">&amp;</text>
+    <text x="451" y="85">&amp;</text>
+    <text x="462" y="85" fill="#a46c14">*</text>
+    <text x="473" y="85">$</text>
+    <text x="484" y="85">#</text>
+    <text x="484" y="100" fill="#147fcd">$</text>
+    <text x="484" y="115">*</text>
+    <text x="451" y="130" fill="#c5463a">*</text>
+    <text x="462" y="130">$</text>
+    <text x="473" y="130">#</text>
+    <text x="539" y="40">$</text>
+    <text x="528" y="55">&amp;</text>
+    <text x="539" y="55">*</text>
+    <text x="517" y="70">$</text>
+    <text x="539" y="70" fill="#c5463a">&amp;</text>
+    <text x="506" y="85">&amp;</text>
+    <text x="539" y="85">#</text>
+    <text x="506" y="100" fill="#a46c14">#</text>
+    <text x="517" y="100">&amp;</text>
+    <text x="528" y="100">*</text>
+    <text x="539" y="100">$</text>
+    <text x="550" y="100" fill="#c5463a">#</text>
+    <text x="539" y="115">*</text>
+    <text x="539" y="130">&amp;</text>
+  </g>
+</svg>

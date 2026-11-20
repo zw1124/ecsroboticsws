@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Sponsors, Packages, Contact, Information } from './Pages';
+import SeasonExplorer from './SeasonExplorer';
 import './pages.css';
+import './home-motion.css';
 function FooterMechanism() {
   const svg = useRef(null);
   const pointer = useRef(null);
@@ -48,16 +50,12 @@ function FooterMechanism() {
   </div>;
 }
 function HomeSponsor() {
-  const [opacity,setOpacity]=useState(1);
-  useEffect(()=>{
-    let frame=0;
-    const update=()=>{frame=0;const hold=Math.min(320,innerHeight*.4);setOpacity(scrollY<hold?1:0);};
-    const scroll=()=>{if(!frame)frame=requestAnimationFrame(update);};
-    update();window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',scroll);
-    return()=>{window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scroll);cancelAnimationFrame(frame);};
-  },[]);
-  return <div className="home-sponsor-dock" style={{opacity,visibility:opacity===0?'hidden':'visible',pointerEvents:opacity===0?'none':'auto'}}>
-    <a className="home-sponsor" href="/sponsors" aria-label="Our sponsor QTS — view our sponsors" tabIndex={opacity===0?-1:0}><span>Supported by</span><img src="/assets/qts-logo.png" alt="QTS" width="748" height="357"/></a>
+  return <div className="home-sponsor-dock">
+    <a className="home-sponsor" href="/sponsors" aria-label="View sponsors Physical Intelligence and QTS">
+      <span>Supported by</span>
+      <span className="home-sponsor-pi"><img src="/assets/physical-intelligence.png" alt="" width="392" height="392"/></span>
+      <img className="home-sponsor-qts" src="/assets/qts-logo.png" alt="QTS" width="748" height="357"/>
+    </a>
   </div>;
 }
 const groups = ['Outreach', 'Programming', 'Build', 'Design'];
@@ -119,52 +117,7 @@ function DiagramPlayer({group, data}) {
     <div className="player-controls"><div className="step-track" aria-label="Diagram steps">{data.labels.map((label,index)=><button key={label} className={step===index?'current':''} aria-label={`Show step ${index+1}: ${label}`} aria-pressed={step===index} onClick={()=>choose(index)}><span className="step-indicator"><span ref={el => progress.current[index]=el}/></span></button>)}</div><button className="play-toggle" aria-label={reduced?'Next diagram step':paused?'Play diagram':'Pause diagram'} aria-pressed={paused} onClick={()=>{if(reduced){choose((step+1)%3);}else setPaused(value=>!value);}}>{paused||reduced?<span className="play-mark"/>:<span className="pause-mark"/>}</button></div>
   </div>;
 }
-function EntrySequence({finish}) {
-  const artwork=useRef(null);
-  useEffect(()=>{
-    const previous=document.body.style.overflow;document.body.style.overflow='hidden';
-    const position=()=>{
-      const hero=document.querySelector('.hero-art');
-      if(!hero||!artwork.current)return;
-      const r=hero.getBoundingClientRect();
-      Object.assign(artwork.current.style,{left:`${r.left}px`,top:`${r.top}px`,width:`${r.width}px`,height:`${r.height}px`});
-    };
-    position();window.addEventListener('resize',position);
-    const key=e=>{if(e.key==='Escape')finish();};window.addEventListener('keydown',key);
-    const timer=setTimeout(finish,3100);
-    return()=>{clearTimeout(timer);window.removeEventListener('resize',position);window.removeEventListener('keydown',key);document.body.style.overflow=previous;};
-  },[]);
-  const isHome=location.pathname==='/';
-  return <div className="entry-sequence entry-matched" role="dialog" aria-modal="true" aria-label="Welcome to FRC Team 12394">
-    <div className="entry-build-number">FRC 12394</div>
-    {isHome && <svg ref={artwork} className="entry-parts-art" viewBox="0 0 1448 1086" aria-hidden="true">
-      <defs>
-        <mask id="entry-base-mask"><rect width="1448" height="1086" fill="white"/><rect x="275" y="65" width="275" height="245" fill="black"/><rect x="590" y="130" width="345" height="220" fill="black"/><rect x="965" y="225" width="285" height="225" fill="black"/></mask>
-        <clipPath id="entry-motor"><rect x="275" y="65" width="275" height="245"/></clipPath>
-        <clipPath id="entry-controller"><rect x="590" y="130" width="345" height="220"/></clipPath>
-        <clipPath id="entry-battery"><rect x="965" y="225" width="285" height="225"/></clipPath>
-      </defs>
-      <defs><mask id="construction-reveal"><rect width="1448" height="1086" fill="black"/><g stroke="white" fill="none" strokeLinecap="round">
-        <path className="frame-trace" pathLength="1" strokeWidth="220" d="M620 438 305 643 750 860 1070 629 620 438"/>
-        <circle className="wheel-reveal wheel-a" cx="260" cy="650" r="155" fill="white" stroke="none"/>
-        <circle className="wheel-reveal wheel-b" cx="548" cy="410" r="130" fill="white" stroke="none"/>
-        <circle className="wheel-reveal wheel-c" cx="1190" cy="693" r="145" fill="white" stroke="none"/>
-        <circle className="wheel-reveal wheel-d" cx="842" cy="899" r="155" fill="white" stroke="none"/>
-        <path className="interior-reveal" strokeWidth="550" d="M450 650 900 720"/>
-      </g><rect className="construction-complete" width="1448" height="1086" fill="white"/></mask></defs>
-      <g mask="url(#construction-reveal)"><image className="entry-part-base" href="/assets/chassis-refined.png" width="1448" height="1086" mask="url(#entry-base-mask)"/></g>
-      <path className="entry-blue-trace" pathLength="1" d="M645 410 1038 597" fill="none" stroke="#739abe" strokeWidth="2"/>
-      <g className="entry-part entry-part-motor"><image href="/assets/chassis-refined.png" width="1448" height="1086" clipPath="url(#entry-motor)"/></g>
-      <g className="entry-part entry-part-controller"><image href="/assets/chassis-refined.png" width="1448" height="1086" clipPath="url(#entry-controller)"/></g>
-      <g className="entry-part entry-part-battery"><image href="/assets/chassis-refined.png" width="1448" height="1086" clipPath="url(#entry-battery)"/></g>
-    </svg>}
-  </div>;
-}
 export function App() {
-  const [entering,setEntering]=useState(()=>{
-    if(location.pathname!=='/' || location.hash || window.matchMedia('(prefers-reduced-motion: reduce)').matches)return false;
-    return true;
-  });
   const [active, setActive] = useState('Programming');
   const tabs = useRef([]);
   const [headerHidden, setHeaderHidden] = useState(false);
@@ -196,13 +149,12 @@ export function App() {
     if (event.key === 'End') next = groups.length - 1;
     if (next !== undefined) { event.preventDefault(); setActive(groups[next]); tabs.current[next].focus(); }
   }
-  return <div className={entering?'site-entering':'site-ready'}>
-    {entering && <EntrySequence finish={()=>setEntering(false)}/>}
-    <header inert={entering?true:undefined} className={`header ${headerHidden?'header-hidden':''} ${headerRaised?'header-raised':''}`} onFocusCapture={()=>setHeaderHidden(false)}><a className="wordmark" href={home?'#home':'/'} aria-label="robotECS home">robotECS</a><nav aria-label="Main navigation"><a href={home?'#team':'/#team'}>Team</a><a href="/sponsors" aria-current={path==='/sponsors'?'page':undefined}>Sponsors</a><a href="/contact" aria-current={path==='/contact'?'page':undefined}>Contact</a></nav></header>
-    <main inert={entering?true:undefined}>
+  return <div className={home ? 'site-ready home-experience' : 'site-ready'}>
+    <header className={`header ${headerHidden?'header-hidden':''} ${headerRaised?'header-raised':''}`} onFocusCapture={()=>setHeaderHidden(false)}><a className="wordmark" href={home?'#home':'/'} aria-label="robotECS home">robotECS</a><nav aria-label="Main navigation"><a href={home?'#team':'/#team'}>Team</a><a href="/sponsors" aria-current={path==='/sponsors'?'page':undefined}>Sponsors</a><a href="/contact" aria-current={path==='/contact'?'page':undefined}>Contact</a></nav></header>
+    <main>
       {home && <>
       <section className="hero" id="home" aria-labelledby="hero-title">
-        <img className="hero-art" src="/assets/chassis-refined.png" alt="Illustration of a robot chassis and its components." fetchPriority="high" />
+        <img className="hero-art team-character-mark" src="/assets/frc-character-mark.svg" width="550" height="170" alt="FRC 12394" fetchPriority="high"/>
         <h1 id="hero-title">Built together.</h1>
         <p className="identity">FRC Team 12394 <span aria-hidden="true">·</span> Evergreen Christian School</p>
         <HomeSponsor/>
@@ -217,11 +169,7 @@ export function App() {
         </div>
         <a className="text-link" href="#team-details">Explore the team <span aria-hidden="true">↗</span></a>
       </section>
-      <section className="season-story" id="team-details" aria-labelledby="season-title">
-        <h2 id="season-title">A team in the making.</h2>
-        <p className="season-intro">Twelve students. A shared curiosity.<br/>Preparing for the 2027 season.</p>
-        <div className="season-notes"><div><span>01</span><h3>Learn the fundamentals.</h3><p>Mechanical, electrical, and programming skills.</p></div><div><span>02</span><h3>Find our roles.</h3><p>Four groups, learning to work as one team.</p></div><div><span>03</span><h3>Prepare for the field.</h3><p>Build the skills and support for our first season.</p></div></div>
-      </section>
+      <SeasonExplorer/>
       <section className="support-note" id="support" aria-labelledby="support-title"><h2 id="support-title">Help the next idea take shape.</h2><a className="text-link" href="/packages">Support our first season <span aria-hidden="true">↗</span></a><p className="support-fine">Explore sponsorship and ways to help.</p></section>
       </>}
       {path==='/sponsors' && <Sponsors/>}
@@ -230,7 +178,7 @@ export function App() {
       {path==='/site-information' && <Information/>}
       {!['/','/sponsors','/packages','/contact','/site-information'].includes(path) && <section className="page-intro document-page"><h1>Page not found.</h1><a className="text-link" href="/">Return home ↗</a></section>}
     </main>
-    <footer inert={entering?true:undefined} className="site-footer">
+    <footer className="site-footer">
       <FooterMechanism/>
       <div className="footer-body"><div className="footer-columns">
         <div><h2>robotECS</h2><a href="/">Home</a><a href="/#team">Our team</a><a href="/#team-details">Our season</a></div>

@@ -86,4 +86,11 @@
 .contact-single .writing-note{max-width:440px;margin-bottom:35px}
 .contact-location{margin-top:65px;font-size:13px;line-height:1.9;color:#7c858d}
 .contact-location span{font-size:12px;color:#969ca2}
+.sponsor-roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:780px;margin:0 auto 56px;text-align:center}
+.sponsor-roster article{padding:18px 12px}
+.sponsor-roster-mark{display:grid;place-items:center;height:80px;margin-bottom:12px}
+.sponsor-roster-mark img{display:block;width:auto;max-width:100%;height:auto;max-height:72px;object-fit:contain}
+.sponsor-roster h2{font:400 clamp(20px,2.45vw,32px)/1.15 'Iowan Old Style',Palatino,serif;margin:0}
+.sponsor-roster p{font-size:14px;color:#656b70;margin:8px 0 0}
+@media(max-width:600px){.sponsor-roster-mark{height:61px}.sponsor-roster-mark img{max-height:50px}}
 @media(max-width:750px){.contact-opening{min-height:calc(100svh - 80px);padding:40px 0 90px}.contact-single{padding:65px 0 20px}.contact-single .contact-writing>h2{font-size:29px}.contact-location{font-size:12px;margin-top:45px}}
